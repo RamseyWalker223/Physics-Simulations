@@ -11,7 +11,7 @@ class arrayLayout{
     public:
         std::vector<bufferAttribs> elements;
         int stride = 0;
-        void push(const int& count, const GLenum& type);
+        void push(const int& count, const unsigned short& type);
 };
 
 class v_array{

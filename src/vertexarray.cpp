@@ -1,7 +1,7 @@
 #include "renderer.h"
 #include "vertexarray.h"
 
-void arrayLayout::push(const int& count, const GLenum& type){
+void arrayLayout::push(const int& count, const unsigned short& type){
     switch(type){
         case GL_UNSIGNED_INT:
             stride+=4 * count;
@@ -35,7 +35,7 @@ void v_array::unbind(){
 void v_array::addBuffer(v_buffer& buffer, const arrayLayout& layout){
     bind();
     buffer.bind();
-    unsigned int offset = 0;
+    uintptr_t offset = 0;
     for(int i = 0; i < layout.elements.size(); i++){
         glEnableVertexAttribArray(i);
         glVertexAttribPointer(i, layout.elements[i].count, layout.elements[i].type, GL_FALSE, layout.stride, (const void*)offset);

@@ -4,7 +4,7 @@ project(physics)
 set(CMAKE_CXX_STANDARD 17)
 
 # Add executable
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp src/indexbuffer.cpp src/renderer.cpp src/shader.cpp src/vertexarray.cpp src/vertexbuffer.cpp)
 
 # --- GLFW ---
 add_subdirectory(dependancies/glfw)

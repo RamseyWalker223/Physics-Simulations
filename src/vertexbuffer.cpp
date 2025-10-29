@@ -8,7 +8,7 @@ v_buffer::v_buffer(const int &size, const void* data){
 }
 
 v_buffer::~v_buffer(){
-    glDeleteBuffers(0, &ID);
+    glDeleteBuffers(1, &ID);
 }
 
 void v_buffer::bind(){

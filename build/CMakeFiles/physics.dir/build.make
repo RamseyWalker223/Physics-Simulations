@@ -86,19 +86,99 @@ CMakeFiles/physics.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/physics.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/main.cpp" -o CMakeFiles/physics.dir/src/main.cpp.s
 
+CMakeFiles/physics.dir/src/indexbuffer.cpp.o: CMakeFiles/physics.dir/flags.make
+CMakeFiles/physics.dir/src/indexbuffer.cpp.o: /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/indexbuffer.cpp
+CMakeFiles/physics.dir/src/indexbuffer.cpp.o: CMakeFiles/physics.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/physics.dir/src/indexbuffer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/physics.dir/src/indexbuffer.cpp.o -MF CMakeFiles/physics.dir/src/indexbuffer.cpp.o.d -o CMakeFiles/physics.dir/src/indexbuffer.cpp.o -c "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/indexbuffer.cpp"
+
+CMakeFiles/physics.dir/src/indexbuffer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/physics.dir/src/indexbuffer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/indexbuffer.cpp" > CMakeFiles/physics.dir/src/indexbuffer.cpp.i
+
+CMakeFiles/physics.dir/src/indexbuffer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/physics.dir/src/indexbuffer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/indexbuffer.cpp" -o CMakeFiles/physics.dir/src/indexbuffer.cpp.s
+
+CMakeFiles/physics.dir/src/renderer.cpp.o: CMakeFiles/physics.dir/flags.make
+CMakeFiles/physics.dir/src/renderer.cpp.o: /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/renderer.cpp
+CMakeFiles/physics.dir/src/renderer.cpp.o: CMakeFiles/physics.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/physics.dir/src/renderer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/physics.dir/src/renderer.cpp.o -MF CMakeFiles/physics.dir/src/renderer.cpp.o.d -o CMakeFiles/physics.dir/src/renderer.cpp.o -c "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/renderer.cpp"
+
+CMakeFiles/physics.dir/src/renderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/physics.dir/src/renderer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/renderer.cpp" > CMakeFiles/physics.dir/src/renderer.cpp.i
+
+CMakeFiles/physics.dir/src/renderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/physics.dir/src/renderer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/renderer.cpp" -o CMakeFiles/physics.dir/src/renderer.cpp.s
+
+CMakeFiles/physics.dir/src/shader.cpp.o: CMakeFiles/physics.dir/flags.make
+CMakeFiles/physics.dir/src/shader.cpp.o: /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/shader.cpp
+CMakeFiles/physics.dir/src/shader.cpp.o: CMakeFiles/physics.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/physics.dir/src/shader.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/physics.dir/src/shader.cpp.o -MF CMakeFiles/physics.dir/src/shader.cpp.o.d -o CMakeFiles/physics.dir/src/shader.cpp.o -c "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/shader.cpp"
+
+CMakeFiles/physics.dir/src/shader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/physics.dir/src/shader.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/shader.cpp" > CMakeFiles/physics.dir/src/shader.cpp.i
+
+CMakeFiles/physics.dir/src/shader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/physics.dir/src/shader.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/shader.cpp" -o CMakeFiles/physics.dir/src/shader.cpp.s
+
+CMakeFiles/physics.dir/src/vertexarray.cpp.o: CMakeFiles/physics.dir/flags.make
+CMakeFiles/physics.dir/src/vertexarray.cpp.o: /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/vertexarray.cpp
+CMakeFiles/physics.dir/src/vertexarray.cpp.o: CMakeFiles/physics.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/physics.dir/src/vertexarray.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/physics.dir/src/vertexarray.cpp.o -MF CMakeFiles/physics.dir/src/vertexarray.cpp.o.d -o CMakeFiles/physics.dir/src/vertexarray.cpp.o -c "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/vertexarray.cpp"
+
+CMakeFiles/physics.dir/src/vertexarray.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/physics.dir/src/vertexarray.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/vertexarray.cpp" > CMakeFiles/physics.dir/src/vertexarray.cpp.i
+
+CMakeFiles/physics.dir/src/vertexarray.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/physics.dir/src/vertexarray.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/vertexarray.cpp" -o CMakeFiles/physics.dir/src/vertexarray.cpp.s
+
+CMakeFiles/physics.dir/src/vertexbuffer.cpp.o: CMakeFiles/physics.dir/flags.make
+CMakeFiles/physics.dir/src/vertexbuffer.cpp.o: /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/vertexbuffer.cpp
+CMakeFiles/physics.dir/src/vertexbuffer.cpp.o: CMakeFiles/physics.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/physics.dir/src/vertexbuffer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/physics.dir/src/vertexbuffer.cpp.o -MF CMakeFiles/physics.dir/src/vertexbuffer.cpp.o.d -o CMakeFiles/physics.dir/src/vertexbuffer.cpp.o -c "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/vertexbuffer.cpp"
+
+CMakeFiles/physics.dir/src/vertexbuffer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/physics.dir/src/vertexbuffer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/vertexbuffer.cpp" > CMakeFiles/physics.dir/src/vertexbuffer.cpp.i
+
+CMakeFiles/physics.dir/src/vertexbuffer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/physics.dir/src/vertexbuffer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/vertexbuffer.cpp" -o CMakeFiles/physics.dir/src/vertexbuffer.cpp.s
+
 # Object files for target physics
 physics_OBJECTS = \
-"CMakeFiles/physics.dir/src/main.cpp.o"
+"CMakeFiles/physics.dir/src/main.cpp.o" \
+"CMakeFiles/physics.dir/src/indexbuffer.cpp.o" \
+"CMakeFiles/physics.dir/src/renderer.cpp.o" \
+"CMakeFiles/physics.dir/src/shader.cpp.o" \
+"CMakeFiles/physics.dir/src/vertexarray.cpp.o" \
+"CMakeFiles/physics.dir/src/vertexbuffer.cpp.o"
 
 # External object files for target physics
 physics_EXTERNAL_OBJECTS =
 
 physics: CMakeFiles/physics.dir/src/main.cpp.o
+physics: CMakeFiles/physics.dir/src/indexbuffer.cpp.o
+physics: CMakeFiles/physics.dir/src/renderer.cpp.o
+physics: CMakeFiles/physics.dir/src/shader.cpp.o
+physics: CMakeFiles/physics.dir/src/vertexarray.cpp.o
+physics: CMakeFiles/physics.dir/src/vertexbuffer.cpp.o
 physics: CMakeFiles/physics.dir/build.make
 physics: dependancies/glfw/src/libglfw3.a
 physics: libglew.a
 physics: CMakeFiles/physics.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable physics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable physics"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/physics.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

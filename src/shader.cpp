@@ -1,18 +1,18 @@
-#include "renderer.h"
 #include "shader.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
+#include "renderer.h"
 
 shader::shader(const std::string& filename){
     filepath = filename;
     shaderSource source = parse(filepath);
-    ID = CreateShader(source.vertex, source.fragment);
+    rendererID = CreateShader(source.vertex, source.fragment);
 }
 
 shader::~shader(){
-    glDeleteProgram(ID);
+    glDeleteProgram(rendererID);
 }
 
 shaderSource shader::parse(const std::string& file){
@@ -77,6 +77,21 @@ unsigned int shader::CreateShader(const std::string& vertexShader,  const std::s
     glAttachShader(program, vs);
     glAttachShader(program, fs);
     glLinkProgram(program);
+    int result;
+    glGetProgramiv(program, GL_LINK_STATUS, &result);
+    if(result == GL_FALSE){
+        int length;
+        
+        glGetProgramiv(program, GL_INFO_LOG_LENGTH, &length);
+        char* infolog = (char*)alloca(length * sizeof(char));
+        
+        glGetProgramInfoLog(program, length, &length, infolog);
+        
+        std::cout << "Failed to Link:\n";
+        std::cout << infolog << "\n";
+        glDeleteShader(program);
+        return 0;
+    }
     glValidateProgram(program);
 
     glDeleteShader(vs);
@@ -86,7 +101,7 @@ unsigned int shader::CreateShader(const std::string& vertexShader,  const std::s
 }
 
 void shader::bind() const{
-    glUseProgram(ID);
+    glUseProgram(rendererID);
 }
 
 void shader::unbind() const{
@@ -97,7 +112,7 @@ int shader::uniform_location(const std::string& name){
     if(location_cache.find(name) != location_cache.end()){
         return location_cache[name];
     }
-    int location = glGetUniformLocation(ID, name.c_str());
+    int location = glGetUniformLocation(rendererID, name.c_str());
     if(location == -1){
         std::cerr << "Uniform " << name << " doesnt exist!\n";
     } else {

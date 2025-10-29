@@ -155,12 +155,12 @@ CMakeFiles/physics.dir/all: CMakeFiles/glew.dir/all
 CMakeFiles/physics.dir/all: dependancies/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=25,26 "Built target physics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=25,26,27,28,29,30,31 "Built target physics"
 .PHONY : CMakeFiles/physics.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/physics.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" 26
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" 31
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/physics.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" 0
 .PHONY : CMakeFiles/physics.dir/rule
@@ -172,7 +172,7 @@ physics: CMakeFiles/physics.dir/rule
 # codegen rule for target.
 CMakeFiles/physics.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=25,26 "Finished codegen for target physics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=25,26,27,28,29,30,31 "Finished codegen for target physics"
 .PHONY : CMakeFiles/physics.dir/codegen
 
 # clean rule for target.
@@ -283,7 +283,7 @@ dependancies/glfw/src/CMakeFiles/glfw.dir/clean:
 dependancies/glfw/src/CMakeFiles/update_mappings.dir/all:
 	$(MAKE) $(MAKESILENT) -f dependancies/glfw/src/CMakeFiles/update_mappings.dir/build.make dependancies/glfw/src/CMakeFiles/update_mappings.dir/depend
 	$(MAKE) $(MAKESILENT) -f dependancies/glfw/src/CMakeFiles/update_mappings.dir/build.make dependancies/glfw/src/CMakeFiles/update_mappings.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=27 "Built target update_mappings"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=32 "Built target update_mappings"
 .PHONY : dependancies/glfw/src/CMakeFiles/update_mappings.dir/all
 
 # Build rule for subdir invocation for target.
@@ -300,7 +300,7 @@ update_mappings: dependancies/glfw/src/CMakeFiles/update_mappings.dir/rule
 # codegen rule for target.
 dependancies/glfw/src/CMakeFiles/update_mappings.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f dependancies/glfw/src/CMakeFiles/update_mappings.dir/build.make dependancies/glfw/src/CMakeFiles/update_mappings.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=27 "Finished codegen for target update_mappings"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=32 "Finished codegen for target update_mappings"
 .PHONY : dependancies/glfw/src/CMakeFiles/update_mappings.dir/codegen
 
 # clean rule for target.

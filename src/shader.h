@@ -1,5 +1,6 @@
 #pragma once
 #include <unordered_map>
+
 #include <string>
 
 struct shaderSource{
@@ -10,7 +11,7 @@ struct shaderSource{
 class shader{
     private:
         std::string filepath;
-        unsigned int ID;
+        unsigned int rendererID;
         int uniform_location(const std::string& name);
         std::unordered_map<std::string, int> location_cache;
 
@@ -28,4 +29,5 @@ class shader{
         void setuniform1f(const std::string& name, float value);
         void setuniform4f(const std::string& name, float v0, float v1, float v2, float v3);
         //void setuniformMat4f(const std::string& name, const glm::mat4& matrix);
+
 };
