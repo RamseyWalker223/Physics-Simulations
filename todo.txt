@@ -1,0 +1,5 @@
+ - Make a buffer class (try and make it a template so it can do vertex buffer and index buffer)
+ Also make this one do layouts as well
+ - Make a vertex array class
+ - Make a shader class
+ - Make a renderer class
