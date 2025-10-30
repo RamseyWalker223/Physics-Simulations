@@ -35,12 +35,12 @@ int main(){
 
     std::cout << glGetString(GL_VERSION) << "\n";
 
-    circle ball(0.0f, 0.0f, 0.5f, "../res/shaders/circle.shader", aspect);
-
+    circle ball(0.0f, 0.8f, 0.01f, -0.008f, 0.1f, "../res/shaders/circle.shader", aspect);
 
     while (!glfwWindowShouldClose(window)){
 
         ball.render();
+        ball.move(0.0000f, 0.00f, aspect);
 
         glfwSwapBuffers(window);
         glfwPollEvents();

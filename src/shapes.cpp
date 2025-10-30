@@ -2,10 +2,12 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-circle::circle(float x, float y, float radius, std::string source, float aspect){
+circle::circle(float x, float y, float vx, float vy, float radius, std::string source, float aspect){
     this->radius = radius;
     this->x = x;
     this->y = y;
+    this->vx = vx;
+    this->vy = vy;
     square.points = {
         x - radius, y - radius,
         x + radius, y - radius,
@@ -34,4 +36,27 @@ circle::circle(float x, float y, float radius, std::string source, float aspect)
 void circle::render(){
     drawing.Clear();
     drawing.Draw(*array, *index, *program);
+}
+
+void circle::translate(float dx, float dy){
+    x+=dx;
+    y+=dy;
+    square.points = {
+        x - radius, y - radius,
+        x + radius, y - radius,
+        x + radius, y + radius,
+        x - radius, y + radius
+    };
+    vertex->bind();
+    glBufferSubData(GL_ARRAY_BUFFER, 0, square.points.size() * sizeof(float), square.points.data());
+    program->setuniform2f("center", x, y);
+}
+
+//Velocity and acceleration's unit of time is a frame
+void circle::move(float ax, float ay, float aspect){
+    translate(vx, vy);
+    vx+=ax;
+    vy+=ay;
+    if(1.000f * aspect - abs(x) <= radius) vx*=-1.00f;
+    if(1.000f - abs(y) <= radius) vy*=-1.00f;
 }
