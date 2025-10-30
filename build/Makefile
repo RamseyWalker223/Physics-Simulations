@@ -162,17 +162,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named physics
+# Target rules for targets named a
 
 # Build rule for target.
-physics: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 physics
-.PHONY : physics
+a : cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 a
+.PHONY : a
 
 # fast build rule for target.
-physics/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/build
-.PHONY : physics/fast
+a/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/build
+.PHONY : a/fast
 
 #=============================================================================
 # Target rules for targets named glew
@@ -186,6 +186,19 @@ glew: cmake_check_build_system
 glew/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/glew.dir/build.make CMakeFiles/glew.dir/build
 .PHONY : glew/fast
+
+#=============================================================================
+# Target rules for targets named glm
+
+# Build rule for target.
+glm: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 glm
+.PHONY : glm
+
+# fast build rule for target.
+glm/fast:
+	$(MAKE) $(MAKESILENT) -f dependancies/glm/glm/CMakeFiles/glm.dir/build.make dependancies/glm/glm/CMakeFiles/glm.dir/build
+.PHONY : glm/fast
 
 #=============================================================================
 # Target rules for targets named uninstall
@@ -255,7 +268,7 @@ src/indexbuffer.o: src/indexbuffer.cpp.o
 
 # target to build an object file
 src/indexbuffer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/indexbuffer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/indexbuffer.cpp.o
 .PHONY : src/indexbuffer.cpp.o
 
 src/indexbuffer.i: src/indexbuffer.cpp.i
@@ -263,7 +276,7 @@ src/indexbuffer.i: src/indexbuffer.cpp.i
 
 # target to preprocess a source file
 src/indexbuffer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/indexbuffer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/indexbuffer.cpp.i
 .PHONY : src/indexbuffer.cpp.i
 
 src/indexbuffer.s: src/indexbuffer.cpp.s
@@ -271,7 +284,7 @@ src/indexbuffer.s: src/indexbuffer.cpp.s
 
 # target to generate assembly for a file
 src/indexbuffer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/indexbuffer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/indexbuffer.cpp.s
 .PHONY : src/indexbuffer.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -279,7 +292,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -287,7 +300,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -295,7 +308,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/renderer.o: src/renderer.cpp.o
@@ -303,7 +316,7 @@ src/renderer.o: src/renderer.cpp.o
 
 # target to build an object file
 src/renderer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/renderer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/renderer.cpp.o
 .PHONY : src/renderer.cpp.o
 
 src/renderer.i: src/renderer.cpp.i
@@ -311,7 +324,7 @@ src/renderer.i: src/renderer.cpp.i
 
 # target to preprocess a source file
 src/renderer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/renderer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/renderer.cpp.i
 .PHONY : src/renderer.cpp.i
 
 src/renderer.s: src/renderer.cpp.s
@@ -319,7 +332,7 @@ src/renderer.s: src/renderer.cpp.s
 
 # target to generate assembly for a file
 src/renderer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/renderer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/renderer.cpp.s
 .PHONY : src/renderer.cpp.s
 
 src/shader.o: src/shader.cpp.o
@@ -327,7 +340,7 @@ src/shader.o: src/shader.cpp.o
 
 # target to build an object file
 src/shader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/shader.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/shader.cpp.o
 .PHONY : src/shader.cpp.o
 
 src/shader.i: src/shader.cpp.i
@@ -335,7 +348,7 @@ src/shader.i: src/shader.cpp.i
 
 # target to preprocess a source file
 src/shader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/shader.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/shader.cpp.i
 .PHONY : src/shader.cpp.i
 
 src/shader.s: src/shader.cpp.s
@@ -343,15 +356,39 @@ src/shader.s: src/shader.cpp.s
 
 # target to generate assembly for a file
 src/shader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/shader.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/shader.cpp.s
 .PHONY : src/shader.cpp.s
+
+src/shapes.o: src/shapes.cpp.o
+.PHONY : src/shapes.o
+
+# target to build an object file
+src/shapes.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/shapes.cpp.o
+.PHONY : src/shapes.cpp.o
+
+src/shapes.i: src/shapes.cpp.i
+.PHONY : src/shapes.i
+
+# target to preprocess a source file
+src/shapes.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/shapes.cpp.i
+.PHONY : src/shapes.cpp.i
+
+src/shapes.s: src/shapes.cpp.s
+.PHONY : src/shapes.s
+
+# target to generate assembly for a file
+src/shapes.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/shapes.cpp.s
+.PHONY : src/shapes.cpp.s
 
 src/vertexarray.o: src/vertexarray.cpp.o
 .PHONY : src/vertexarray.o
 
 # target to build an object file
 src/vertexarray.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/vertexarray.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/vertexarray.cpp.o
 .PHONY : src/vertexarray.cpp.o
 
 src/vertexarray.i: src/vertexarray.cpp.i
@@ -359,7 +396,7 @@ src/vertexarray.i: src/vertexarray.cpp.i
 
 # target to preprocess a source file
 src/vertexarray.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/vertexarray.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/vertexarray.cpp.i
 .PHONY : src/vertexarray.cpp.i
 
 src/vertexarray.s: src/vertexarray.cpp.s
@@ -367,7 +404,7 @@ src/vertexarray.s: src/vertexarray.cpp.s
 
 # target to generate assembly for a file
 src/vertexarray.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/vertexarray.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/vertexarray.cpp.s
 .PHONY : src/vertexarray.cpp.s
 
 src/vertexbuffer.o: src/vertexbuffer.cpp.o
@@ -375,7 +412,7 @@ src/vertexbuffer.o: src/vertexbuffer.cpp.o
 
 # target to build an object file
 src/vertexbuffer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/vertexbuffer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/vertexbuffer.cpp.o
 .PHONY : src/vertexbuffer.cpp.o
 
 src/vertexbuffer.i: src/vertexbuffer.cpp.i
@@ -383,7 +420,7 @@ src/vertexbuffer.i: src/vertexbuffer.cpp.i
 
 # target to preprocess a source file
 src/vertexbuffer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/vertexbuffer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/vertexbuffer.cpp.i
 .PHONY : src/vertexbuffer.cpp.i
 
 src/vertexbuffer.s: src/vertexbuffer.cpp.s
@@ -391,7 +428,7 @@ src/vertexbuffer.s: src/vertexbuffer.cpp.s
 
 # target to generate assembly for a file
 src/vertexbuffer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics.dir/build.make CMakeFiles/physics.dir/src/vertexbuffer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/vertexbuffer.cpp.s
 .PHONY : src/vertexbuffer.cpp.s
 
 # Help Target
@@ -408,9 +445,10 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... uninstall"
 	@echo "... update_mappings"
+	@echo "... a"
 	@echo "... glew"
 	@echo "... glfw"
-	@echo "... physics"
+	@echo "... glm"
 	@echo "... dependancies/glew/src/glew.o"
 	@echo "... dependancies/glew/src/glew.i"
 	@echo "... dependancies/glew/src/glew.s"
@@ -426,6 +464,9 @@ help:
 	@echo "... src/shader.o"
 	@echo "... src/shader.i"
 	@echo "... src/shader.s"
+	@echo "... src/shapes.o"
+	@echo "... src/shapes.i"
+	@echo "... src/shapes.s"
 	@echo "... src/vertexarray.o"
 	@echo "... src/vertexarray.i"
 	@echo "... src/vertexarray.s"

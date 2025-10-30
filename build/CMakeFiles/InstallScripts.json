@@ -2,6 +2,8 @@
 	"InstallScripts" : 
 	[
 		"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/cmake_install.cmake",
+		"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glm/cmake_install.cmake",
+		"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glm/glm/cmake_install.cmake",
 		"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/cmake_install.cmake",
 		"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src/cmake_install.cmake",
 		"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/docs/cmake_install.cmake"

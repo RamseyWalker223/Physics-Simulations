@@ -1,7 +1,9 @@
 #pragma once
-#include <unordered_map>
 
+#include <unordered_map>
 #include <string>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 struct shaderSource{
     std::string vertex;
@@ -27,7 +29,8 @@ class shader{
 
         void setuniform1i(const std::string& name, int poo);
         void setuniform1f(const std::string& name, float value);
+        void setuniform2f(const std::string& name, float v0, float v1);
         void setuniform4f(const std::string& name, float v0, float v1, float v2, float v3);
-        //void setuniformMat4f(const std::string& name, const glm::mat4& matrix);
+        void setuniformMat4f(const std::string& name, const glm::mat4& matrix);
 
 };

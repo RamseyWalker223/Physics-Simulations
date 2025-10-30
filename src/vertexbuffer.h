@@ -8,4 +8,5 @@ class v_buffer{
         ~v_buffer();
         void bind();
         void unbind();
+        void update(const int& size, const void* data);
 };

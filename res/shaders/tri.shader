@@ -5,12 +5,11 @@
 //Location is the spot in our vertex buffer we want to access, first we pushed coordinates layout then we pushed texture position.
 layout(location = 0) in vec4 position;
 
-//uniform mat4 u_MVP;
+uniform mat4 u_Matrix;
 
 void main(){
    //Multiply our screen position by matrix that kinda normalizes it to the screen
-   //gl_Position = u_MVP * position;
-   gl_Position = position;
+   gl_Position = u_Matrix * position;
    //v_texture_position = texture_position;
 }
 

@@ -1,5 +1,11 @@
 #include "renderer.h"
 #include "shapes.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
+static const int width = 960;
+static const int height = 540;
+static float aspect = (float)width/(float)height;
 
 int main(){
     GLFWwindow* window;
@@ -12,7 +18,7 @@ int main(){
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(960, 540, "OBAMA", NULL, NULL);
+    window = glfwCreateWindow(width, height, "OBAMA", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -29,39 +35,12 @@ int main(){
 
     std::cout << glGetString(GL_VERSION) << "\n";
 
-    shape tri;
-    tri.points = {
-        -1.0f, -1.0f,
-        1.0f, -1.0f,
-        1.0f, 1.0f
-    };
-
-    tri.indices = {
-        0, 1, 2
-    };
-
-    v_buffer vb(3 * 2 * sizeof(float), tri.points.data());
-
-    i_buffer ib(3, tri.indices.data());
-
-    arrayLayout layout;
-    layout.push(2, GL_FLOAT);
-
-    v_array va;
-    va.addBuffer(vb, layout);
-
-    shader nigga("../res/shaders/tri.shader");
-    nigga.bind();
-
-    nigga.setuniform4f("u_Color", 1.0f, 0.1f, 0.0f, 1.0f);
-
-    renderer r;
+    circle ball(0.0f, 0.0f, 0.5f, "../res/shaders/circle.shader", aspect);
 
 
     while (!glfwWindowShouldClose(window)){
 
-        r.Clear();
-        r.Draw(va, ib, nigga);
+        ball.render();
 
         glfwSwapBuffers(window);
         glfwPollEvents();

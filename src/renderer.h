@@ -5,6 +5,15 @@
 #include "indexbuffer.h"
 #include "shader.h"
 #include <iostream>
+#include <cassert>
+
+#define CALL(x) clearError();\
+    x;\
+    assert(printError(#x, __FILE__, __LINE__))
+
+void clearError();
+
+bool printError(const char* function, const char* file, int line);
 
 class renderer{
     public:

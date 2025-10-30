@@ -1,34 +1,38 @@
 #include "renderer.h"
 #include "vertexarray.h"
 
-void arrayLayout::push(const int& count, const unsigned short& type){
+int getTypeSize(const unsigned short& type){
     switch(type){
         case GL_UNSIGNED_INT:
-            stride+=4 * count;
-            break;
+            return 4;
         case GL_UNSIGNED_BYTE:
-            stride+= 1 * count;
-            break;
+            return 1;
         case GL_FLOAT:
-            stride+= 4 * count;
+            return 4;
     }
+    std::cerr << "Invalid GLenum type!\n";
+    return 69420;
+}
+
+void arrayLayout::push(const int& count, const unsigned short& type){
+    stride += count * getTypeSize(type);
     elements.push_back({count, type});
 }
 
 v_array::v_array(){
-    glGenVertexArrays(1, &ID);
+    CALL(glGenVertexArrays(1, &ID));
 }
 
 v_array::~v_array(){
-    glDeleteVertexArrays(1, &ID);
+    CALL(glDeleteVertexArrays(1, &ID));
 }
 
 void v_array::bind(){
-    glBindVertexArray(ID);
+    CALL(glBindVertexArray(ID));
 }
 
 void v_array::unbind(){
-    glBindVertexArray(0);
+    CALL(glBindVertexArray(0));
 }
 
 
@@ -37,8 +41,8 @@ void v_array::addBuffer(v_buffer& buffer, const arrayLayout& layout){
     buffer.bind();
     uintptr_t offset = 0;
     for(int i = 0; i < layout.elements.size(); i++){
-        glEnableVertexAttribArray(i);
-        glVertexAttribPointer(i, layout.elements[i].count, layout.elements[i].type, GL_FALSE, layout.stride, (const void*)offset);
-        offset+= layout.elements[i].count * layout.elements[i].type;
+        CALL(glEnableVertexAttribArray(i));
+        CALL(glVertexAttribPointer(i, layout.elements[i].count, layout.elements[i].type, GL_FALSE, layout.stride, (const void*)offset));
+        offset+= layout.elements[i].count * getTypeSize(layout.elements[i].type);
     }
 }

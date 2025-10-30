@@ -18,6 +18,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/CMakeLists.txt"
   "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/docs/CMakeLists.txt"
   "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/CMakeLists.txt"
+  "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm/CMakeLists.txt"
+  "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm/glm/CMakeLists.txt"
   "/opt/homebrew/share/cmake/Modules/BasicConfigVersion-SameMajorVersion.cmake.in"
   "/opt/homebrew/share/cmake/Modules/CMakeCInformation.cmake"
   "/opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake"
@@ -81,6 +83,8 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "dependancies/glm/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "dependancies/glm/glm/CMakeFiles/CMakeDirectoryInformation.cmake"
   "dependancies/glfw/src/glfw3Config.cmake"
   "dependancies/glfw/src/glfw3ConfigVersion.cmake"
   "dependancies/glfw/cmake_uninstall.cmake"
@@ -92,8 +96,9 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/physics.dir/DependInfo.cmake"
+  "CMakeFiles/a.dir/DependInfo.cmake"
   "CMakeFiles/glew.dir/DependInfo.cmake"
+  "dependancies/glm/glm/CMakeFiles/glm.dir/DependInfo.cmake"
   "dependancies/glfw/CMakeFiles/uninstall.dir/DependInfo.cmake"
   "dependancies/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
   "dependancies/glfw/src/CMakeFiles/update_mappings.dir/DependInfo.cmake"

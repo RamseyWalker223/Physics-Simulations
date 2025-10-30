@@ -51,6 +51,10 @@
         "unordered_map": "cpp",
         "variant": "cpp",
         "vector": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "__config": "cpp",
+        "iterator": "cpp",
+        "type_traits": "cpp",
+        "version": "cpp"
     }
 }
