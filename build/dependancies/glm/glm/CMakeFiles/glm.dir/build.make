@@ -76,15 +76,15 @@ dependancies/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.o: dependancies/glm/glm/C
 dependancies/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.o: /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/dependancies/glm/glm/detail/glm.cpp
 dependancies/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.o: dependancies/glm/glm/CMakeFiles/glm.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object dependancies/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.o"
-	cd "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glm/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dependancies/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.o -MF CMakeFiles/glm.dir/detail/glm.cpp.o.d -o CMakeFiles/glm.dir/detail/glm.cpp.o -c "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm/glm/detail/glm.cpp"
+	cd "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glm/glm" && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dependancies/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.o -MF CMakeFiles/glm.dir/detail/glm.cpp.o.d -o CMakeFiles/glm.dir/detail/glm.cpp.o -c "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm/glm/detail/glm.cpp"
 
 dependancies/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/glm.dir/detail/glm.cpp.i"
-	cd "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glm/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm/glm/detail/glm.cpp" > CMakeFiles/glm.dir/detail/glm.cpp.i
+	cd "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glm/glm" && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm/glm/detail/glm.cpp" > CMakeFiles/glm.dir/detail/glm.cpp.i
 
 dependancies/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/glm.dir/detail/glm.cpp.s"
-	cd "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glm/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm/glm/detail/glm.cpp" -o CMakeFiles/glm.dir/detail/glm.cpp.s
+	cd "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glm/glm" && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm/glm/detail/glm.cpp" -o CMakeFiles/glm.dir/detail/glm.cpp.s
 
 # Object files for target glm
 glm_OBJECTS = \

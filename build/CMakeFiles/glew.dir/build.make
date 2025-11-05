@@ -76,15 +76,15 @@ CMakeFiles/glew.dir/dependancies/glew/src/glew.c.o: CMakeFiles/glew.dir/flags.ma
 CMakeFiles/glew.dir/dependancies/glew/src/glew.c.o: /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/dependancies/glew/src/glew.c
 CMakeFiles/glew.dir/dependancies/glew/src/glew.c.o: CMakeFiles/glew.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/glew.dir/dependancies/glew/src/glew.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/glew.dir/dependancies/glew/src/glew.c.o -MF CMakeFiles/glew.dir/dependancies/glew/src/glew.c.o.d -o CMakeFiles/glew.dir/dependancies/glew/src/glew.c.o -c "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/src/glew.c"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/glew.dir/dependancies/glew/src/glew.c.o -MF CMakeFiles/glew.dir/dependancies/glew/src/glew.c.o.d -o CMakeFiles/glew.dir/dependancies/glew/src/glew.c.o -c "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/src/glew.c"
 
 CMakeFiles/glew.dir/dependancies/glew/src/glew.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/glew.dir/dependancies/glew/src/glew.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/src/glew.c" > CMakeFiles/glew.dir/dependancies/glew/src/glew.c.i
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/src/glew.c" > CMakeFiles/glew.dir/dependancies/glew/src/glew.c.i
 
 CMakeFiles/glew.dir/dependancies/glew/src/glew.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/glew.dir/dependancies/glew/src/glew.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/src/glew.c" -o CMakeFiles/glew.dir/dependancies/glew/src/glew.c.s
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/src/glew.c" -o CMakeFiles/glew.dir/dependancies/glew/src/glew.c.s
 
 # Object files for target glew
 glew_OBJECTS = \

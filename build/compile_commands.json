@@ -1,0 +1,182 @@
+[
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build",
+  "command": "/usr/bin/clang  -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/include\" -g -arch arm64 -o CMakeFiles/glew.dir/dependancies/glew/src/glew.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/src/glew.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/src/glew.c",
+  "output": "CMakeFiles/glew.dir/dependancies/glew/src/glew.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build",
+  "command": "/usr/bin/clang++  -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/include\" -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -arch arm64 -o CMakeFiles/a.dir/src/main.cpp.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/main.cpp\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/main.cpp",
+  "output": "CMakeFiles/a.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build",
+  "command": "/usr/bin/clang++  -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/include\" -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -arch arm64 -o CMakeFiles/a.dir/src/indexbuffer.cpp.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/indexbuffer.cpp\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/indexbuffer.cpp",
+  "output": "CMakeFiles/a.dir/src/indexbuffer.cpp.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build",
+  "command": "/usr/bin/clang++  -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/include\" -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -arch arm64 -o CMakeFiles/a.dir/src/renderer.cpp.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/renderer.cpp\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/renderer.cpp",
+  "output": "CMakeFiles/a.dir/src/renderer.cpp.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build",
+  "command": "/usr/bin/clang++  -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/include\" -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -arch arm64 -o CMakeFiles/a.dir/src/shader.cpp.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/shader.cpp\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/shader.cpp",
+  "output": "CMakeFiles/a.dir/src/shader.cpp.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build",
+  "command": "/usr/bin/clang++  -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/include\" -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -arch arm64 -o CMakeFiles/a.dir/src/vertexarray.cpp.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/vertexarray.cpp\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/vertexarray.cpp",
+  "output": "CMakeFiles/a.dir/src/vertexarray.cpp.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build",
+  "command": "/usr/bin/clang++  -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/include\" -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -arch arm64 -o CMakeFiles/a.dir/src/vertexbuffer.cpp.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/vertexbuffer.cpp\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/vertexbuffer.cpp",
+  "output": "CMakeFiles/a.dir/src/vertexbuffer.cpp.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build",
+  "command": "/usr/bin/clang++  -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/include\" -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -arch arm64 -o CMakeFiles/a.dir/src/shapes.cpp.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/shapes.cpp\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/shapes.cpp",
+  "output": "CMakeFiles/a.dir/src/shapes.cpp.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glm/glm",
+  "command": "/usr/bin/clang++  -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm\" -g -std=c++17 -arch arm64 -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-switch-default -o CMakeFiles/glm.dir/detail/glm.cpp.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm/glm/detail/glm.cpp\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm/glm/detail/glm.cpp",
+  "output": "dependancies/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/context.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/context.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/context.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/context.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/init.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/init.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/init.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/init.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/input.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/input.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/input.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/input.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/monitor.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/monitor.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/monitor.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/monitor.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/platform.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/platform.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/platform.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/platform.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/vulkan.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/vulkan.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/vulkan.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/window.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/window.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/window.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/window.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/egl_context.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/egl_context.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/egl_context.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/osmesa_context.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/osmesa_context.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/osmesa_context.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/null_init.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/null_init.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/null_init.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/null_init.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/null_monitor.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/null_monitor.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/null_monitor.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/null_window.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/null_window.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/null_window.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/null_window.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/null_joystick.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/null_joystick.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/null_joystick.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/cocoa_time.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/cocoa_time.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/cocoa_time.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/posix_module.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/posix_module.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/posix_module.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/posix_thread.c.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/posix_thread.c\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/posix_thread.c",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -x objective-c -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/cocoa_init.m.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/cocoa_init.m\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/cocoa_init.m",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -x objective-c -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/cocoa_joystick.m.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/cocoa_joystick.m\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/cocoa_joystick.m",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -x objective-c -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/cocoa_monitor.m.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/cocoa_monitor.m\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/cocoa_monitor.m",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -x objective-c -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/cocoa_window.m.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/cocoa_window.m\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/cocoa_window.m",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src",
+  "command": "/usr/bin/clang -D_GLFW_COCOA -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glfw/src\" -x objective-c -g -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/nsgl_context.m.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/nsgl_context.m\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/src/nsgl_context.m",
+  "output": "dependancies/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o"
+}
+]

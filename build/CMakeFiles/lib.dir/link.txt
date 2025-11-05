@@ -1,1 +1,0 @@
-/usr/bin/c++  -arch arm64 -dynamiclib -Wl,-headerpad_max_install_names -o liblib.dylib -install_name @rpath/liblib.dylib CMakeFiles/lib.dir/lib.cpp.o
