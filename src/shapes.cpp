@@ -3,11 +3,14 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 circle::circle(float x, float y, float vx, float vy, float radius, std::string source, float aspect){
+    rising = false;
     this->radius = radius;
-    this->x = x;
+    this->x = x * aspect;
     this->y = y;
-    this->vx = vx;
+    this->vx = vx * aspect;
     this->vy = vy;
+    vxi = vx * aspect;
+    vyi = vy;
     square.points = {
         x - radius, y - radius,
         x + radius, y - radius,
@@ -41,6 +44,7 @@ void circle::render(){
 void circle::translate(float dx, float dy){
     x+=dx;
     y+=dy;
+
     square.points = {
         x - radius, y - radius,
         x + radius, y - radius,
@@ -54,9 +58,38 @@ void circle::translate(float dx, float dy){
 
 //Velocity and acceleration's unit of time is a frame
 void circle::move(float ax, float ay, float aspect){
+    //std::cout << "Position: " << y << "\n";
+    //std::cout << "Velocity: " << vy << "\n";
+    float prev_y = y;
     translate(vx, vy);
+    
+
+    /*if(y >= prev_y && !rising){
+        rising = true;
+    } else if(y < prev_y && rising){
+        std::cout << "Max height:" << prev_y << "\n";
+        rising = false;
+    }*/
+
     vx+=ax;
     vy+=ay;
-    if(1.000f * aspect - abs(x) <= radius) vx*=-1.00f;
-    if(1.000f - abs(y) <= radius) vy*=-1.00f;
+    //We assume perfect elasticity
+    if(aspect - abs(x) <= radius) {
+        if(x > 0.00f){
+            vx = -vxi;
+            x = aspect - radius;
+        } else {
+            vx = vxi;
+            x = -aspect + radius;
+        }
+    }
+    if(1.00f - abs(y) <= radius) {
+        if(y > 0.00f){
+            vy = -vyi;
+            y = 1.00f - radius;
+        } else {
+            vy = vyi;
+            y = -1.00f + radius;
+        }
+    }
 }

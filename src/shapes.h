@@ -9,9 +9,11 @@ struct shape{
 
 class circle{
     private:
-        float radius;
-        //Position and initial velocity
-        float x,y, vx, vy;
+        //Add critical velocity and position ten frames into the future to correct off of?
+        //No idea if this would work.:/
+        //Radius, position and initial velocity
+        float radius, x,y, vx, vy, vxi, vyi;
+        bool rising;
         renderer drawing;
         std::unique_ptr<i_buffer> index;
         std::unique_ptr<v_buffer> vertex;

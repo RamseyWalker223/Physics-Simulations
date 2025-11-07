@@ -3,8 +3,18 @@ project(a)
 
 set(CMAKE_CXX_STANDARD 17)
 
+set(PROJECT_SOURCES
+    src/main.cpp
+    src/indexbuffer.cpp
+    src/renderer.cpp
+    src/shader.cpp
+    src/vertexarray.cpp
+    src/vertexbuffer.cpp
+    src/shapes.cpp
+)
+
 # Add executable
-add_executable(${PROJECT_NAME} src/main.cpp src/indexbuffer.cpp src/renderer.cpp src/shader.cpp src/vertexarray.cpp src/vertexbuffer.cpp src/shapes.cpp)
+add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
 
 add_subdirectory(dependancies/glm)
 
@@ -36,3 +46,15 @@ target_link_libraries(${PROJECT_NAME}
     "-framework IOKit"
     "-framework CoreVideo"
 )
+
+#For debug mode:
+# run lldb a
+# These are the usable commands:
+# (lldb) breakpoint set --file src/main.cpp --line 42
+# (lldb) run            to start
+# (lldb) next           step over
+# (lldb) step          step into function
+# (lldb) print myVar    show variable
+# (lldb) bt             backtrace (call stack)
+# (lldb) continue       to continue
+# (lldb) exit           to leave

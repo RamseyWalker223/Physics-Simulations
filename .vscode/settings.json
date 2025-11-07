@@ -55,6 +55,8 @@
         "__config": "cpp",
         "iterator": "cpp",
         "type_traits": "cpp",
-        "version": "cpp"
+        "version": "cpp",
+        "fstream": "cpp",
+        "iomanip": "cpp"
     }
 }
