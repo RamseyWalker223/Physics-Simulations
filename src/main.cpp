@@ -2,6 +2,7 @@
 #include "shapes.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <stdio.h>
 
 static const int width = 960;
 static const int height = 540;
@@ -19,6 +20,8 @@ int main(){
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     
+    glfwWindowHint(GLFW_COCOA_RETINA_FRAMEBUFFER, GLFW_FALSE);
+
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(width, height, "SIMULATION", NULL, NULL);
     if (!window)
@@ -37,28 +40,37 @@ int main(){
 
     std::cout << glGetString(GL_VERSION) << "\n";
 
-    circle ball(-1.00f + 0.06f, -1.0f + 0.06f, 0.01f, 0.03f, 0.06f, "../res/shaders/circle.shader", aspect);
+    //circle ball(-1.00f + 0.06f, -1.0f + 0.06f, 0.01f, 0.03f, 0.0000f, -0.0004f, 0.0f, 0.06f, "../res/shaders/circle.shader", aspect, 1.0f, 0.1f, 0.0f, 1.0f);
 
-    //For streaming, this doesnt really work
-    //FILE* video = popen("ffmpeg -y -f rawvideo -pixel_format rgba -video_size 960x540 -framerate 60 -i - " "-vf vflip " "-pix_fmt yuv420p ../videos/simulation.mp4", "w");
+
+    
+    std::vector<float> balls = {
+        //      x            y        vx       vy     ax     ay   mass  radius  r     g     b     a
+        -1.00f + 0.2f, 1.00f - 0.2f, 0.021f, 0.015f, 0.00f, 0.00f, 1.0f, 0.1f, 1.0f, 0.1f, 0.0f, 1.0f,
+        1.00f - 0.2f, -1.00f + 0.2f, -0.03f, 0.025f, 0.00f, 0.00f, 1.0f, 0.1f, 0.0f, 1.0f, 0.25f, 1.0f
+    };
+
+    const char* cmd = "ffmpeg -r 60 -f rawvideo -pix_fmt rgba -s 960x540 -i - "
+    "-threads 0 -preset fast -y -pix_fmt yuv420p -crf 21 -vf vflip ../videos/output.mp4 -pix_fmt yuv420p";
+    FILE* ffmpeg = popen(cmd, "w");
+    int* buffer = new int[width*height];
+
+    scene circles(balls, "../res/shaders/circle.shader", aspect);
 
     while (!glfwWindowShouldClose(window)){
+        //usleep(500000);
 
-        ball.render();
-        
-        //Doing this much acceleration seems to break it
-        //Find out why
-        ball.move(0.0000f, -0.0004f, aspect);
+        circles.run();
 
-        //Outputing to video file
-        //unsigned char frame[width*height*4];
-        //glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, frame);
-        //fwrite(frame, 1, sizeof(frame), video);
+        //ball.render();
+        //ball.move();
+
+        glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+        fwrite(buffer, sizeof(int)*width*height, 1, ffmpeg);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
-
     }
-    //pclose(video);
+    pclose(ffmpeg);
     return 0;
 }
