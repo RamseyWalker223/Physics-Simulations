@@ -43,6 +43,12 @@
 },
 {
   "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build",
+  "command": "/usr/bin/clang++  -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/include\" -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -arch arm64 -o CMakeFiles/a.dir/src/shape.cpp.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/shape.cpp\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/shape.cpp",
+  "output": "CMakeFiles/a.dir/src/shape.cpp.o"
+},
+{
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build",
   "command": "/usr/bin/clang++  -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/include\" -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -arch arm64 -o CMakeFiles/a.dir/src/shapes.cpp.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/shapes.cpp\"",
   "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/shapes.cpp",
   "output": "CMakeFiles/a.dir/src/shapes.cpp.o"

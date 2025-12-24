@@ -359,6 +359,30 @@ src/shader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/shader.cpp.s
 .PHONY : src/shader.cpp.s
 
+src/shape.o: src/shape.cpp.o
+.PHONY : src/shape.o
+
+# target to build an object file
+src/shape.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/shape.cpp.o
+.PHONY : src/shape.cpp.o
+
+src/shape.i: src/shape.cpp.i
+.PHONY : src/shape.i
+
+# target to preprocess a source file
+src/shape.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/shape.cpp.i
+.PHONY : src/shape.cpp.i
+
+src/shape.s: src/shape.cpp.s
+.PHONY : src/shape.s
+
+# target to generate assembly for a file
+src/shape.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/shape.cpp.s
+.PHONY : src/shape.cpp.s
+
 src/shapes.o: src/shapes.cpp.o
 .PHONY : src/shapes.o
 
@@ -464,6 +488,9 @@ help:
 	@echo "... src/shader.o"
 	@echo "... src/shader.i"
 	@echo "... src/shader.s"
+	@echo "... src/shape.o"
+	@echo "... src/shape.i"
+	@echo "... src/shape.s"
 	@echo "... src/shapes.o"
 	@echo "... src/shapes.i"
 	@echo "... src/shapes.s"
