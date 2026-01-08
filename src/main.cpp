@@ -4,6 +4,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <stdio.h>
 #include <format>
+#include "texture.h"
 
 static const int width = 960;
 static const int height = 540;
@@ -40,9 +41,62 @@ int main(){
 
     std::cout << glGetString(GL_VERSION) << "\n";
 
+    //Defining our matrices for transforming 2 different coordinate systems
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+
+    glm::mat4 view = glm::mat4(1.0f);
+    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f)); 
+
+    glm::mat4 projection;
+    projection = glm::perspective(glm::radians(45.0f), aspect, 0.1f, 100.0f);
+
+    float points[16] = {
+        -0.5, -0.5,   0.0f, 0.0f,
+        -0.5, 0.5,    0.0f, 1.0f,
+         0.5, 0.5,    1.0f, 1.0f,
+         0.5, -0.5,   1.0f, 0.0f
+    };
+
+    int indices[6] = {
+        0, 1, 2,
+        0, 2, 3
+    };
+
+    v_buffer vb(sizeof(points) * sizeof(float), points);
+
+    texture image("../res/textures/image.jpg");
+    image.bind();
+
+    v_array va;
+    arrayLayout layout;
+    layout.push(2, GL_FLOAT);
+    layout.push(2, GL_FLOAT);
+    va.addBuffer(vb, layout);
+
+    i_buffer ib(sizeof(indices), indices);
+
+    shader fubar("../res/shaders/3d.shader");
+    fubar.bind();
+
+    renderer scene;
+
+
+    while(!glfwWindowShouldClose(window)){
+        
+        fubar.setuniformMat4f("model", model);
+        fubar.setuniformMat4f("view", view);
+        fubar.setuniformMat4f("projection", projection);
+        scene.Draw(va, ib, fubar);
+
+
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
+
     //particle ball(-1.00f + 0.1f, 0, 0, 0, 0.00f, 0.00f, 1.0f, 0.1f, "../res/shaders/circle.shader", aspect, 1.0f, 0.1f, 0.0f, 1.0f, 100);
 
-    std::vector<float> balls = {
+    /*std::vector<float> balls = {
         //      x            y        vx       vy     ax     ay   mass  radius  r     g     b     a
         -1.00f + 0.1f, -1.00f + 0.1f, 0.03f, 0.025f, 0.00f, 0.00f, 1.0f, 0.1f, 1.0f, 0.1f, 0.0f, 1.0f,
         1.00f - 0.1f, -1.00f + 0.1f, -0.03f, 0.025f, 0.00f, 0.00f, 1.0f, 0.1f, 0.0f, 1.0f, 0.25f, 1.0f,
@@ -72,6 +126,6 @@ int main(){
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-    pclose(ffmpeg);
+    pclose(ffmpeg);*/
     return 0;
 }

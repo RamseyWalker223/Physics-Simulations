@@ -54,6 +54,12 @@
   "output": "CMakeFiles/a.dir/src/shapes.cpp.o"
 },
 {
+  "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build",
+  "command": "/usr/bin/clang++  -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glfw/include\" -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glew/include\" -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++20 -arch arm64 -o CMakeFiles/a.dir/src/texture.cpp.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/texture.cpp\"",
+  "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/texture.cpp",
+  "output": "CMakeFiles/a.dir/src/texture.cpp.o"
+},
+{
   "directory": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/dependancies/glm/glm",
   "command": "/usr/bin/clang++  -I\"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm\" -g -std=c++17 -arch arm64 -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-switch-default -o CMakeFiles/glm.dir/detail/glm.cpp.o -c \"/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm/glm/detail/glm.cpp\"",
   "file": "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/dependancies/glm/glm/detail/glm.cpp",

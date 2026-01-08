@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/a.dir/src/shape.cpp.o.d"
   "CMakeFiles/a.dir/src/shapes.cpp.o"
   "CMakeFiles/a.dir/src/shapes.cpp.o.d"
+  "CMakeFiles/a.dir/src/texture.cpp.o"
+  "CMakeFiles/a.dir/src/texture.cpp.o.d"
   "CMakeFiles/a.dir/src/vertexarray.cpp.o"
   "CMakeFiles/a.dir/src/vertexarray.cpp.o.d"
   "CMakeFiles/a.dir/src/vertexbuffer.cpp.o"

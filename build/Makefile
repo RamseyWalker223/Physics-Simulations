@@ -407,6 +407,30 @@ src/shapes.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/shapes.cpp.s
 .PHONY : src/shapes.cpp.s
 
+src/texture.o: src/texture.cpp.o
+.PHONY : src/texture.o
+
+# target to build an object file
+src/texture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/texture.cpp.o
+.PHONY : src/texture.cpp.o
+
+src/texture.i: src/texture.cpp.i
+.PHONY : src/texture.i
+
+# target to preprocess a source file
+src/texture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/texture.cpp.i
+.PHONY : src/texture.cpp.i
+
+src/texture.s: src/texture.cpp.s
+.PHONY : src/texture.s
+
+# target to generate assembly for a file
+src/texture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/texture.cpp.s
+.PHONY : src/texture.cpp.s
+
 src/vertexarray.o: src/vertexarray.cpp.o
 .PHONY : src/vertexarray.o
 
@@ -494,6 +518,9 @@ help:
 	@echo "... src/shapes.o"
 	@echo "... src/shapes.i"
 	@echo "... src/shapes.s"
+	@echo "... src/texture.o"
+	@echo "... src/texture.i"
+	@echo "... src/texture.s"
 	@echo "... src/vertexarray.o"
 	@echo "... src/vertexarray.i"
 	@echo "... src/vertexarray.s"

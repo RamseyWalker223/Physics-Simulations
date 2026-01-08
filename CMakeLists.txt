@@ -12,6 +12,7 @@ set(PROJECT_SOURCES
     src/vertexbuffer.cpp
     src/shape.cpp
     src/shapes.cpp
+    src/texture.cpp
 )
 
 # Add executable
