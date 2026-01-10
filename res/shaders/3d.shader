@@ -13,7 +13,7 @@ uniform mat4 view;
 uniform mat4 projection;
 
 void main(){
-   //Multiply our screen position by matrix that kinda normalizes it to the screen
+   //Multiply our screen position by matrix that normalizes it to the screen
    gl_Position = projection * view * model * position;
    v_texture_position = texture_position;
 }

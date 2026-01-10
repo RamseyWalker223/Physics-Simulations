@@ -41,9 +41,8 @@ int main(){
 
     std::cout << glGetString(GL_VERSION) << "\n";
 
-    //Defining our matrices for transforming 2 different coordinate systems
-    glm::mat4 model = glm::mat4(1.0f);
-    model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    //This should be put inside a renderer class another time.
+    glEnable(GL_DEPTH_TEST);
 
     glm::mat4 view = glm::mat4(1.0f);
     view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f)); 
@@ -51,17 +50,51 @@ int main(){
     glm::mat4 projection;
     projection = glm::perspective(glm::radians(45.0f), aspect, 0.1f, 100.0f);
 
-    float points[16] = {
-        -0.5, -0.5,   0.0f, 0.0f,
-        -0.5, 0.5,    0.0f, 1.0f,
-         0.5, 0.5,    1.0f, 1.0f,
-         0.5, -0.5,   1.0f, 0.0f
+    float points[40] = {    //texture coords
+        -0.5, -0.5, 0.5,    0.0f, 0.0f,
+        -0.5, 0.5,  0.5,    0.0f, 1.0f,
+         0.5, 0.5,  0.5,    1.0f, 1.0f,
+         0.5, -0.5, 0.5,    1.0f, 0.0f,
+
+        -0.5, -0.5, -0.5,    1.0f, 0.0f,
+        -0.5, 0.5,  -0.5,    1.0f, 1.0f,
+         0.5, 0.5,  -0.5,    0.0f, 1.0f,
+         0.5, -0.5, -0.5,    0.0f, 0.0f
     };
 
-    int indices[6] = {
+    int indices[36] = {
         0, 1, 2,
-        0, 2, 3
+        0, 2, 3,
+
+        3, 2, 6,
+        3, 6, 7,
+
+        0, 1, 5,
+        0, 4, 5,
+
+        4, 5, 6,
+        4, 6, 7,
+
+        1, 5, 6,
+        1, 6, 2,
+
+        0, 7, 3,
+        0, 4, 7
     };
+
+    glm::vec3 cubePositions[] = {
+        glm::vec3( 0.0f,  0.0f,  0.0f), 
+        glm::vec3( 2.0f,  5.0f, -15.0f), 
+        glm::vec3(-1.5f, -2.2f, -2.5f),  
+        glm::vec3(-3.8f, -2.0f, -12.3f),  
+        glm::vec3( 2.4f, -0.4f, -3.5f),  
+        glm::vec3(-1.7f,  3.0f, -7.5f),  
+        glm::vec3( 1.3f, -2.0f, -2.5f),  
+        glm::vec3( 1.5f,  2.0f, -2.5f), 
+        glm::vec3( 1.5f,  0.2f, -1.5f), 
+        glm::vec3(-1.3f,  1.0f, -1.5f)  
+    };
+
 
     v_buffer vb(sizeof(points) * sizeof(float), points);
 
@@ -70,7 +103,7 @@ int main(){
 
     v_array va;
     arrayLayout layout;
-    layout.push(2, GL_FLOAT);
+    layout.push(3, GL_FLOAT);
     layout.push(2, GL_FLOAT);
     va.addBuffer(vb, layout);
 
@@ -81,14 +114,51 @@ int main(){
 
     renderer scene;
 
+    fubar.setuniformMat4f("projection", projection);
+
+    glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f);
+    glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+    glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
+
+    const float cameraSpeed = 0.025f;
 
     while(!glfwWindowShouldClose(window)){
-        
-        fubar.setuniformMat4f("model", model);
-        fubar.setuniformMat4f("view", view);
-        fubar.setuniformMat4f("projection", projection);
-        scene.Draw(va, ib, fubar);
+        if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS){
+            glfwSetWindowShouldClose(window, true);
+        }
+        if(glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS){
+            cameraPos += cameraSpeed * cameraUp;
+        }
+        if(glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) || glfwGetKey(window, GLFW_KEY_RIGHT_SHIFT) == GLFW_PRESS){
+            cameraPos -= cameraSpeed * cameraUp;
+        }
+        if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS){
+            cameraPos += cameraSpeed * cameraFront;
+        }
+        if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS){
+            cameraPos -= cameraSpeed * cameraFront;
+        }
+        if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS){
+            cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+        }
+        if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS){
+            cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+        }
 
+        view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+
+        scene.Clear();
+        //For now we put this outside, well put it inside the clear function later
+        CALL(glClear(GL_DEPTH_BUFFER_BIT));
+
+        fubar.setuniformMat4f("view", view);
+
+        for(unsigned int i = 0; i < 10; i++){
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, cubePositions[i]);
+            fubar.setuniformMat4f("model", model);
+            scene.Draw(va, ib, fubar);
+        }
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -115,7 +185,7 @@ int main(){
     int* buffer = new int[width*height];
 
     while (!glfwWindowShouldClose(window) && circles.run()){
-        //usleep(500000);
+        //
 
         //ball.render(false);
         //ball.move();
