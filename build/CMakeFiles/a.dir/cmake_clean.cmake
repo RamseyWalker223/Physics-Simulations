@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/a.dir/src/2d.cpp.o"
+  "CMakeFiles/a.dir/src/2d.cpp.o.d"
+  "CMakeFiles/a.dir/src/3d.cpp.o"
+  "CMakeFiles/a.dir/src/3d.cpp.o.d"
   "CMakeFiles/a.dir/src/indexbuffer.cpp.o"
   "CMakeFiles/a.dir/src/indexbuffer.cpp.o.d"
   "CMakeFiles/a.dir/src/main.cpp.o"

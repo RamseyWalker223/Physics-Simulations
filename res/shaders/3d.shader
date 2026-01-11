@@ -25,7 +25,7 @@ layout(location = 0) out vec4 color;
 
 in vec2 v_texture_position;
 
-uniform vec4 u_Color;
+//uniform vec4 u_Color;
 uniform sampler2D u_Texture;
 
 void main(){

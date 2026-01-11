@@ -13,6 +13,8 @@ set(PROJECT_SOURCES
     src/shape.cpp
     src/shapes.cpp
     src/texture.cpp
+    src/2d.cpp
+    src/3d.cpp
 )
 
 # Add executable

@@ -4,6 +4,7 @@
 #include "vertexarray.h"
 #include "indexbuffer.h"
 #include "shader.h"
+#include "texture.h"
 #include <iostream>
 #include <cassert>
 

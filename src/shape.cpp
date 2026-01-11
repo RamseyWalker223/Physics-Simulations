@@ -45,8 +45,12 @@ void particle::render(bool multiple){
 }
 
 void particle::translate(float dx, float dy){
-    position.x+=dx;
-    position.y+=dy;
+    if(dx != 0){
+        position.x+=dx;
+    }
+    if(dy != 0){
+        position.y+=dy;
+    }
 
     square.points = {
         (position.x - radius), position.y - radius,
@@ -56,6 +60,7 @@ void particle::translate(float dx, float dy){
     };
     vertex->bind();
     glBufferSubData(GL_ARRAY_BUFFER, 0, square.points.size() * sizeof(float), square.points.data());
+    program->bind();
     program->setuniform2f("center", position.x, position.y);
 }
 

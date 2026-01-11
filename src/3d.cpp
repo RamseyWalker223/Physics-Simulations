@@ -1,0 +1,207 @@
+#include "3d.h"
+
+cube::cube(){
+    body.points = {
+        -1.0f, -1.0f, 1.0f,    0.0f, 0.0f,
+        -1.0f, 1.0f,  1.0f,    0.0f, 1.0f,
+         1.0f, 1.0f,  1.0f,    1.0f, 1.0f,
+         1.0f, -1.0f, 1.0f,    1.0f, 0.0f,
+
+        -1.0f, -1.0f, -1.0f,    1.0f, 0.0f,
+        -1.0f, 1.0f,  -1.0f,    1.0f, 1.0f,
+         1.0f, 1.0f,  -1.0f,    0.0f, 1.0f,
+         1.0f, -1.0f, -1.0f,    0.0f, 0.0f
+    };
+    body.indices = {
+        0, 1, 2,
+        0, 2, 3,
+
+        3, 2, 6,
+        3, 6, 7,
+
+        0, 1, 5,
+        0, 4, 5,
+
+        4, 5, 6,
+        4, 6, 7,
+
+        1, 5, 6,
+        1, 6, 2,
+
+        0, 7, 3,
+        0, 4, 7
+    };
+}
+
+camera::camera(int& width, int& height, float& sensitivity, float& speed, float& fov){
+    this->last_x = width/2;
+    this->last_y = height/2;
+    this->pitch = 0.0f;
+    this->yaw = -90.0f;
+    this->sensitivity = sensitivity;
+    this->speed = speed;
+    this->fov = fov;
+    Δtime = 0.0f;
+    last_frame = 0.0f;
+    this->pos = glm::vec3(0.0f, 0.0f,  3.0f);
+    this->front = glm::vec3(0.0f, 0.0f, -1.0f);
+    this->up = glm::vec3(0.0f, 1.0f,  0.0f);
+    this->view = glm::translate(view, pos);
+    this->projection = glm::perspective(fov, (float)width/(float)height, 0.0001f, 100.0f);
+}
+
+void camera::translate(GLFWwindow* window){
+    float frame = glfwGetTime();
+    Δtime = frame - last_frame;
+    last_frame = frame;
+    float camera_speed = speed * Δtime;
+    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS){
+        glfwSetWindowShouldClose(window, true);
+    }
+    if(glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS){
+        pos += camera_speed * up;
+    }
+    if(glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_RIGHT_SHIFT) == GLFW_PRESS){
+        pos -= camera_speed * up;
+    }
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS){
+        pos += camera_speed * front;
+    }
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS){
+        pos -= camera_speed * front;
+    }
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS){
+        pos -= glm::normalize(glm::cross(front, up)) * camera_speed;
+    }
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS){
+        pos += glm::normalize(glm::cross(front, up)) * camera_speed;
+    }
+    view = glm::lookAt(pos, pos + front, up);
+}
+
+void camera::mouse(GLFWwindow* window, double xpos, double ypos){
+    if (first){
+        last_x = xpos;
+        last_y = ypos;
+        first = false;
+    }
+    float xoffset = xpos - last_x;
+    float yoffset = last_y - ypos; // reversed since y-coordinates range from bottom to top
+    last_x = xpos;
+    last_y = ypos;
+
+    xoffset *= sensitivity;
+    yoffset *= sensitivity;
+    yaw   += xoffset;
+    pitch += yoffset;
+    if(pitch > 89.0f){
+        pitch =  89.0f;
+    }
+    if(pitch < -89.0f){
+        pitch = -89.0f;
+    }
+    glm::vec3 direction;
+    direction.x = cos(glm::radians(yaw));
+    direction.y = sin(glm::radians(pitch));
+    direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+    front = glm::normalize(direction);
+}
+
+static camera* cam = nullptr;
+
+void mouser(GLFWwindow* window, double xpos, double ypos) {
+    cam->mouse(window, xpos, ypos);
+}
+
+scene_3d::scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& positions, std::vector<float>& scales, float sensitivity, float speed, float fov, std::string image, std::string program){
+    this->fps = fps;
+    this->width = width;
+    this->height = height;
+
+    //Opengl and window setup.
+    if (!glfwInit())
+        std::cerr << "Uh oh.\n";
+    
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    
+    glfwWindowHint(GLFW_COCOA_RETINA_FRAMEBUFFER, GLFW_FALSE);
+
+
+    window = glfwCreateWindow(width, height, "SIMULATION", NULL, NULL);
+
+
+    glfwMakeContextCurrent(window);
+
+    if(glewInit() != GLEW_OK){
+        std::cerr << "Error!\n";
+    }
+
+    std::cout << glGetString(GL_VERSION) << "\n";
+
+    glEnable(GL_DEPTH_TEST);
+
+    this->exposure = std::make_unique<camera>(width, height, sensitivity, speed, fov);
+    cam = exposure.get();
+    for(int i = 0; i < positions.size(); i++){
+        this->positions.emplace_back(positions[i]/scales[i]);
+    }
+    this->vb = std::make_unique<v_buffer>(this->mesh.body.points.size()*sizeof(float), this->mesh.body.points.data());
+    arrayLayout layout;
+    layout.push(3, GL_FLOAT);
+    layout.push(2, GL_FLOAT);
+    this->va = std::make_unique<v_array>();
+    this->va->addBuffer(*this->vb, layout);
+    this->ib = std::make_unique<i_buffer>(this->mesh.body.indices.size() * sizeof(int), this->mesh.body.indices.data());
+    this->program = std::make_unique<shader>(program);
+    this->image = std::make_unique<texture>(image);
+    this->r = std::make_unique<renderer>();
+
+    //Disable mouse visibility and movement
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+    //Uniforms
+    this->program->bind();
+    this->program->setuniformMat4f("projection", this->exposure->projection);
+    this->image->bind();
+}
+
+void scene_3d::run(bool video, bool screen){
+    if(video){
+        std::string cmd_str = "ffmpeg -r " + std::to_string(fps) + " -f rawvideo -pix_fmt rgba -s " + std::to_string(width) + "x" + std::to_string(height) + " -i - -threads 0 -preset fast -y -pix_fmt yuv420p -crf 21 -vf vflip ../videos/simulation.mp4 -pix_fmt yuv420p";
+        this->cmd = cmd_str.c_str();
+
+        this->ffmpeg = popen(cmd, "w");
+        buffer = new int[width*height];
+    }
+    
+    while(!glfwWindowShouldClose(window)){
+        glfwSetCursorPosCallback(window, mouser);
+
+        exposure->translate(window);
+
+        r->Clear();
+        CALL(glClear(GL_DEPTH_BUFFER_BIT));
+
+        program->setuniformMat4f("view", exposure->view);
+
+        for(int i = 0; i < positions.size(); i++){
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, positions[i]);
+            program->setuniformMat4f("model", model);
+            r->Draw(*va, *ib, *program);
+        }
+
+        if(video){
+            glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+            fwrite(buffer, sizeof(int)*width*height, 1, ffmpeg);
+        }
+
+        if(screen){
+            glfwSwapBuffers(window);
+            glfwPollEvents();
+        }
+    }
+    if(video) pclose(ffmpeg);
+}

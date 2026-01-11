@@ -263,6 +263,54 @@ dependancies/glew/src/glew.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/glew.dir/build.make CMakeFiles/glew.dir/dependancies/glew/src/glew.c.s
 .PHONY : dependancies/glew/src/glew.c.s
 
+src/2d.o: src/2d.cpp.o
+.PHONY : src/2d.o
+
+# target to build an object file
+src/2d.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/2d.cpp.o
+.PHONY : src/2d.cpp.o
+
+src/2d.i: src/2d.cpp.i
+.PHONY : src/2d.i
+
+# target to preprocess a source file
+src/2d.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/2d.cpp.i
+.PHONY : src/2d.cpp.i
+
+src/2d.s: src/2d.cpp.s
+.PHONY : src/2d.s
+
+# target to generate assembly for a file
+src/2d.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/2d.cpp.s
+.PHONY : src/2d.cpp.s
+
+src/3d.o: src/3d.cpp.o
+.PHONY : src/3d.o
+
+# target to build an object file
+src/3d.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/3d.cpp.o
+.PHONY : src/3d.cpp.o
+
+src/3d.i: src/3d.cpp.i
+.PHONY : src/3d.i
+
+# target to preprocess a source file
+src/3d.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/3d.cpp.i
+.PHONY : src/3d.cpp.i
+
+src/3d.s: src/3d.cpp.s
+.PHONY : src/3d.s
+
+# target to generate assembly for a file
+src/3d.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/3d.cpp.s
+.PHONY : src/3d.cpp.s
+
 src/indexbuffer.o: src/indexbuffer.cpp.o
 .PHONY : src/indexbuffer.o
 
@@ -500,6 +548,12 @@ help:
 	@echo "... dependancies/glew/src/glew.o"
 	@echo "... dependancies/glew/src/glew.i"
 	@echo "... dependancies/glew/src/glew.s"
+	@echo "... src/2d.o"
+	@echo "... src/2d.i"
+	@echo "... src/2d.s"
+	@echo "... src/3d.o"
+	@echo "... src/3d.i"
+	@echo "... src/3d.s"
 	@echo "... src/indexbuffer.o"
 	@echo "... src/indexbuffer.i"
 	@echo "... src/indexbuffer.s"
