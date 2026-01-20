@@ -1,6 +1,6 @@
 #include "2d.h"
 
-scene_2d::scene_2d(const int& width, const int& height, const int& fps, std::vector<float>& points, int time){
+scene_2d::scene_2d(const int& width, const int& height, const int& fps){
     this->width = width;
     this->height = height;
     this->aspect = (float)width/(float)height;
@@ -28,11 +28,14 @@ scene_2d::scene_2d(const int& width, const int& height, const int& fps, std::vec
     }
 
     std::cout << glGetString(GL_VERSION) << "\n";
+}
 
-    //This should be put inside a renderer class another time. Also only have it for 3d rendering.
-    //glEnable(GL_DEPTH_TEST);
+void scene_2d::set_sim_man(std::vector<float>& balls, int time){
+    this->world = std::make_unique<simulation>(balls, "../res/shaders/circle.shader", (float)this->width/(float)this->height, time);
+}
 
-    this->world = std::make_unique<simulation>(points, "../res/shaders/circle.shader", aspect, time);
+void scene_2d::set_sim_fast(int ball_X, int ball_Y, float mass_Range, int time){
+    this->world = std::make_unique<simulation>(ball_X, ball_Y, mass_Range, "../res/shaders/circle.shader", (float)this->width/(float)this->height, time);
 }
 
 void scene_2d::run(bool video, bool screen){

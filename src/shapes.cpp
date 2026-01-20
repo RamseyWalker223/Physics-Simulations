@@ -168,6 +168,7 @@ simulation::simulation(int ball_X, int ball_Y, float mass_range, std::string sou
     Δy = (2.00f/(ball_Y + 1));
     x = Δx;
     y = Δy;
+    //Arbitrary coefficient, make this better in the future
     max_radius = std::min(x, y)/2.3f;
     while(y < 2.00f){
         while(x < 2*aspect){
@@ -197,7 +198,7 @@ void simulation::simulate(){
             } else {
                 collide_wall(i->second);
             }
-            i++; 
+            i++;
         }
         it++;
     }
@@ -258,7 +259,9 @@ void simulation::predict(int ball, const std::unordered_set<int>& exceptions){
             type = 2;
         }
     }
+    if (std::fabs(T - 40.9311295f) < 0.0001f) {
 
+    }
     if(type != -1){
         event* collision_ptr = nullptr;
         int collision_indexer = -1;
@@ -284,6 +287,9 @@ void simulation::predict(int ball, const std::unordered_set<int>& exceptions){
 
     if(type == 2){
         if(objects[balls[1]].collision != nullptr && objects[balls[1]].collision->t > objects[balls[1]].t){
+            if (std::fabs(objects[balls[1]].collision->t - 40.9311295f) < 0.00001f) {
+
+            }
             if(objects[balls[1]].collision->axis == 2){
                 bool index = (objects[balls[1]].collision->particles[0] == balls[1]) ? false : true;
                 objects[objects[balls[1]].collision->particles[1 - index]].collision = nullptr;

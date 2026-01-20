@@ -23,8 +23,11 @@ int main(){
         0.4, -0.4, 0.02f, -0.03f, 0.00f, 0.00f, 3.0f, 0.2f, 0.0f, 1.0f, 1.25f, 1.0f
     };
 
-    scene_2d scene(width, height, fps, balls, 1000);
+    scene_2d scene(width, height, fps);
+    scene.set_sim_man(balls, 10);
+    //scene.set_sim_fast(10, 10, 1, 100);
     scene.run(true, false);
+    return 0;
 }
 
 //3d
@@ -46,6 +49,7 @@ int main(){
         0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f
     };
 
-    scene_3d scene(width, height, fps, positions, scales, 0.2f, 2.5f, glm::radians(fov), "../res/textures/image.png", "../res/shaders/3d.shader");
+    scene_3d scene(width, height, fps, positions, scales, 0.2f, 2.5f, glm::radians(fov), "../res/textures/obama.jpg", "../res/shaders/3d.shader");
     scene.run(false, true);
+    return 0;
 }*/

@@ -6,7 +6,7 @@
 #include <unordered_set>
 #include <cfloat>
 #include <map>
-
+#include <set>
 
 inline constexpr float ZERO = 1e-8f;
 
@@ -59,7 +59,6 @@ class particle{
         void move();
         void place(float time);
         void interpolate(float& time);
-
 };
 
 //For now we will only store a pair of balls in a collision, but in the future, we might deside to make it a tree.
@@ -74,6 +73,7 @@ class event{
         std::vector<t_vector> velocities;
         //For axis, 0 is x and 1 is y and 2 is a collision with another particle
         //Im too lazy to think of a better data type
+        //USE ENUMS YOU FUCKING DONUT
         int axis;
         event(float t, std::vector<int>& particles, const std::vector<t_vector>& positions, const std::vector<t_vector>& velocities, int axis);
         event(const std::vector<particle>& objects);
@@ -92,6 +92,7 @@ class simulation{
         std::map<int, event> framed_moments;
         simulation(std::vector<float>& points, std::string source, float aspect, int time);
         simulation(int ball_X, int ball_Y, float mass_range, std::string source, float aspect, int time);
+        simulation() = default;
         void simulate();
         void predict(int ball, const std::unordered_set<int>& exceptions);
         void collide_wall(event& e);

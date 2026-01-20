@@ -70,7 +70,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++20 -arch arm64"
+					"fragment" : "-g -std=gnu++2b -arch arm64"
 				}
 			],
 			"frameworks" : 
@@ -101,7 +101,7 @@
 				[
 					1
 				],
-				"standard" : "20"
+				"standard" : "26"
 			},
 			"sourceIndexes" : 
 			[
