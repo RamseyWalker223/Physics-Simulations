@@ -170,24 +170,10 @@ CMakeFiles/a.dir/src/shape.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/a.dir/src/shape.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/shape.cpp" -o CMakeFiles/a.dir/src/shape.cpp.s
 
-CMakeFiles/a.dir/src/shapes.cpp.o: CMakeFiles/a.dir/flags.make
-CMakeFiles/a.dir/src/shapes.cpp.o: /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/shapes.cpp
-CMakeFiles/a.dir/src/shapes.cpp.o: CMakeFiles/a.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/a.dir/src/shapes.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/a.dir/src/shapes.cpp.o -MF CMakeFiles/a.dir/src/shapes.cpp.o.d -o CMakeFiles/a.dir/src/shapes.cpp.o -c "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/shapes.cpp"
-
-CMakeFiles/a.dir/src/shapes.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/a.dir/src/shapes.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/shapes.cpp" > CMakeFiles/a.dir/src/shapes.cpp.i
-
-CMakeFiles/a.dir/src/shapes.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/a.dir/src/shapes.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/shapes.cpp" -o CMakeFiles/a.dir/src/shapes.cpp.s
-
 CMakeFiles/a.dir/src/texture.cpp.o: CMakeFiles/a.dir/flags.make
 CMakeFiles/a.dir/src/texture.cpp.o: /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/texture.cpp
 CMakeFiles/a.dir/src/texture.cpp.o: CMakeFiles/a.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/a.dir/src/texture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/a.dir/src/texture.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/a.dir/src/texture.cpp.o -MF CMakeFiles/a.dir/src/texture.cpp.o.d -o CMakeFiles/a.dir/src/texture.cpp.o -c "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/texture.cpp"
 
 CMakeFiles/a.dir/src/texture.cpp.i: cmake_force
@@ -201,7 +187,7 @@ CMakeFiles/a.dir/src/texture.cpp.s: cmake_force
 CMakeFiles/a.dir/src/2d.cpp.o: CMakeFiles/a.dir/flags.make
 CMakeFiles/a.dir/src/2d.cpp.o: /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/2d.cpp
 CMakeFiles/a.dir/src/2d.cpp.o: CMakeFiles/a.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/a.dir/src/2d.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/a.dir/src/2d.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/a.dir/src/2d.cpp.o -MF CMakeFiles/a.dir/src/2d.cpp.o.d -o CMakeFiles/a.dir/src/2d.cpp.o -c "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/2d.cpp"
 
 CMakeFiles/a.dir/src/2d.cpp.i: cmake_force
@@ -215,7 +201,7 @@ CMakeFiles/a.dir/src/2d.cpp.s: cmake_force
 CMakeFiles/a.dir/src/3d.cpp.o: CMakeFiles/a.dir/flags.make
 CMakeFiles/a.dir/src/3d.cpp.o: /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/3d.cpp
 CMakeFiles/a.dir/src/3d.cpp.o: CMakeFiles/a.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/a.dir/src/3d.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/a.dir/src/3d.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/a.dir/src/3d.cpp.o -MF CMakeFiles/a.dir/src/3d.cpp.o.d -o CMakeFiles/a.dir/src/3d.cpp.o -c "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/3d.cpp"
 
 CMakeFiles/a.dir/src/3d.cpp.i: cmake_force
@@ -226,6 +212,20 @@ CMakeFiles/a.dir/src/3d.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/a.dir/src/3d.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/3d.cpp" -o CMakeFiles/a.dir/src/3d.cpp.s
 
+CMakeFiles/a.dir/src/simulation.cpp.o: CMakeFiles/a.dir/flags.make
+CMakeFiles/a.dir/src/simulation.cpp.o: /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/simulation.cpp
+CMakeFiles/a.dir/src/simulation.cpp.o: CMakeFiles/a.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/a.dir/src/simulation.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/a.dir/src/simulation.cpp.o -MF CMakeFiles/a.dir/src/simulation.cpp.o.d -o CMakeFiles/a.dir/src/simulation.cpp.o -c "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/simulation.cpp"
+
+CMakeFiles/a.dir/src/simulation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/a.dir/src/simulation.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/simulation.cpp" > CMakeFiles/a.dir/src/simulation.cpp.i
+
+CMakeFiles/a.dir/src/simulation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/a.dir/src/simulation.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ramseywalker/NuclearLaunchCodes/C++/Physics Simulations/src/simulation.cpp" -o CMakeFiles/a.dir/src/simulation.cpp.s
+
 # Object files for target a
 a_OBJECTS = \
 "CMakeFiles/a.dir/src/main.cpp.o" \
@@ -235,10 +235,10 @@ a_OBJECTS = \
 "CMakeFiles/a.dir/src/vertexarray.cpp.o" \
 "CMakeFiles/a.dir/src/vertexbuffer.cpp.o" \
 "CMakeFiles/a.dir/src/shape.cpp.o" \
-"CMakeFiles/a.dir/src/shapes.cpp.o" \
 "CMakeFiles/a.dir/src/texture.cpp.o" \
 "CMakeFiles/a.dir/src/2d.cpp.o" \
-"CMakeFiles/a.dir/src/3d.cpp.o"
+"CMakeFiles/a.dir/src/3d.cpp.o" \
+"CMakeFiles/a.dir/src/simulation.cpp.o"
 
 # External object files for target a
 a_EXTERNAL_OBJECTS =
@@ -250,10 +250,10 @@ a : CMakeFiles/a.dir/src/shader.cpp.o
 a : CMakeFiles/a.dir/src/vertexarray.cpp.o
 a : CMakeFiles/a.dir/src/vertexbuffer.cpp.o
 a : CMakeFiles/a.dir/src/shape.cpp.o
-a : CMakeFiles/a.dir/src/shapes.cpp.o
 a : CMakeFiles/a.dir/src/texture.cpp.o
 a : CMakeFiles/a.dir/src/2d.cpp.o
 a : CMakeFiles/a.dir/src/3d.cpp.o
+a : CMakeFiles/a.dir/src/simulation.cpp.o
 a : CMakeFiles/a.dir/build.make
 a : dependancies/glm/glm/libglm.a
 a : dependancies/glfw/src/libglfw3.a

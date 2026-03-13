@@ -431,29 +431,29 @@ src/shape.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/shape.cpp.s
 .PHONY : src/shape.cpp.s
 
-src/shapes.o: src/shapes.cpp.o
-.PHONY : src/shapes.o
+src/simulation.o: src/simulation.cpp.o
+.PHONY : src/simulation.o
 
 # target to build an object file
-src/shapes.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/shapes.cpp.o
-.PHONY : src/shapes.cpp.o
+src/simulation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/simulation.cpp.o
+.PHONY : src/simulation.cpp.o
 
-src/shapes.i: src/shapes.cpp.i
-.PHONY : src/shapes.i
+src/simulation.i: src/simulation.cpp.i
+.PHONY : src/simulation.i
 
 # target to preprocess a source file
-src/shapes.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/shapes.cpp.i
-.PHONY : src/shapes.cpp.i
+src/simulation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/simulation.cpp.i
+.PHONY : src/simulation.cpp.i
 
-src/shapes.s: src/shapes.cpp.s
-.PHONY : src/shapes.s
+src/simulation.s: src/simulation.cpp.s
+.PHONY : src/simulation.s
 
 # target to generate assembly for a file
-src/shapes.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/shapes.cpp.s
-.PHONY : src/shapes.cpp.s
+src/simulation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/src/simulation.cpp.s
+.PHONY : src/simulation.cpp.s
 
 src/texture.o: src/texture.cpp.o
 .PHONY : src/texture.o
@@ -569,9 +569,9 @@ help:
 	@echo "... src/shape.o"
 	@echo "... src/shape.i"
 	@echo "... src/shape.s"
-	@echo "... src/shapes.o"
-	@echo "... src/shapes.i"
-	@echo "... src/shapes.s"
+	@echo "... src/simulation.o"
+	@echo "... src/simulation.i"
+	@echo "... src/simulation.s"
 	@echo "... src/texture.o"
 	@echo "... src/texture.i"
 	@echo "... src/texture.s"

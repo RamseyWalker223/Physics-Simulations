@@ -1,6 +1,6 @@
-CMakeFiles/a.dir/src/3d.cpp.o: \
-  /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/3d.cpp \
-  /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/3d.h \
+CMakeFiles/a.dir/src/simulation.cpp.o: \
+  /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/simulation.cpp \
+  /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/simulation.h \
   /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/renderer.h \
   /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/dependancies/glew/include/GL/glew.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstddef \
@@ -964,7 +964,6 @@ CMakeFiles/a.dir/src/3d.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/print \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__system_error/throw_system_error.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/unistd.h \
-  /Users/ramseywalker/NuclearLaunchCodes/C++/Physics\ Simulations/src/simulation.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/set \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tree \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/list \
