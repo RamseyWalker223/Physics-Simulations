@@ -1,18 +1,48 @@
-#include "shapes.h"
+#include "simulation.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-particle::particle(float x, float y, float vx, float vy, float ax, float ay, float mass, float radius, std::string source, float aspect, float r, float g, float b, float a){
-    this->t = 0;
-    this->collision = nullptr;
-    this->collision_index = -1;
-    this->radius = radius;
-    this->mass = mass;
-    this->position.x = x;
-    this->position.y = y;
-    this->velocities[0] = {vx, vy};
-    this->acceleration.x = ax;
-    this->acceleration.y = ay;
+void particle::move(float dt){
+    this->time += dt;
+    position.interpolate(dt, velocity);
+}
+
+event particle::next_collision(float& timer, int spot){
+    //Calculating which wall it will hit first is easier right now, but with accelleration that will become more difficult. And t will NEVER be less than objects[ball].time
+    collision_type type = NONE;
+    if(collision && time != *collision.value()->time) move(*collision.value()->time - time);
+    
+    float dx = aspect - radius;
+    
+    if(velocity.x < 0) dx*=-1.0f;
+    dx = dx - position.x;
+    float tx = dx/velocity.x + time;
+    if(tx < timer && tx > time){
+        timer = tx;
+        type = WALL;
+    }
+
+    float dy = 1.0f - radius;
+    
+    if(velocity.y < 0) dy*=-1.0f;
+    dy = dy - position.y;
+    float ty = dy/velocity.y + time;
+    if(ty < timer && ty > time){
+        timer = ty;
+        type = CEILING;
+    }
+    return { timer, type, this, spot };
+}
+
+particle_m::particle_m(float x, float y, float vx, float vy, float ax, float ay, float mass, float radius, std::string source, float aspect, float r, float g, float b, float a){
+    this->ball.radius = radius;
+    this->ball.mass = mass;
+    this->ball.aspect = aspect;
+    this->ball.position.x = x;
+    this->ball.position.y = y;
+    this->ball.velocity = {vx, vy};
+    this->ball.time = 0.0f;
+
 
     square.points = {
         (x - radius), y - radius,
@@ -33,99 +63,30 @@ particle::particle(float x, float y, float vx, float vy, float ax, float ay, flo
     array->addBuffer(*vertex, layout);
     program->bind();
     program->setuniform1f("radius", radius);
-    program->setuniform2f("center", x, y);
-    program->setuniform4f("u_Color", r, g, b, a);
+    program->setuniform2f("center", glm::vec2(x, y));
+    program->setuniform4f("u_Color", glm::vec4(r, g, b, a));
     glm::mat4 projection = glm::ortho(-aspect, aspect, -1.0f, 1.0f, -1.0f, 1.0f);
     program->setuniformMat4f("u_Matrix", projection);
 }
 
-void particle::render(bool multiple){
-    if(!multiple) drawing.Clear();
-    drawing.Draw(*array, *index, *program);
-}
-
-void particle::translate(float dx, float dy){
-    if(dx != 0){
-        position.x+=dx;
-    }
-    if(dy != 0){
-        position.y+=dy;
-    }
-
+void particle_m::update(){
     square.points = {
-        (position.x - radius), position.y - radius,
-        (position.x + radius), position.y - radius,
-        (position.x + radius), position.y + radius,
-        (position.x - radius), position.y + radius
+        (ball.position.x - ball.radius), ball.position.y - ball.radius,
+        (ball.position.x + ball.radius), ball.position.y - ball.radius,
+        (ball.position.x + ball.radius), ball.position.y + ball.radius,
+        (ball.position.x - ball.radius), ball.position.y + ball.radius
     };
     vertex->bind();
     glBufferSubData(GL_ARRAY_BUFFER, 0, square.points.size() * sizeof(float), square.points.data());
     program->bind();
-    program->setuniform2f("center", position.x, position.y);
+    program->setuniform2f("center", glm::vec2(ball.position.x, ball.position.y));
+    drawing.Draw(*array, *index, *program);
 }
 
-float particle::time(float x, float v, float a, float x2){
-    if(a == 0.00f){
-        return (x2 - x)/v;
-    }
-    float discriminant = v*v - (2 * a * (x - x2));
-    if(discriminant < 0.00f) return -1;
-    else if(discriminant == 0.00f) return v/a;
-    else {
-        discriminant = sqrt(discriminant);
-        //optimize the /a operator to be done once.
-        return std::max((discriminant - v)/a, (-v - discriminant)/a);
-    }
+void particle_m::tick(){
+    ball.position.x += ball.velocity.x;
+    ball.position.y += ball.velocity.y;
+
+    update();
 }
 
-float particle::vf(float v, float a, float t){
-    return v + a*t;
-}
-
-float particle::d(float vf, float vi, float a){
-    return (pow(vf, 2) - pow(vi, 2))/(2*a);
-}
-
-void particle::collide(bool top, int axis){
-    float wall = (top) ? 1.00f - radius : radius - 1.00f;
-    float t = time(position[axis], velocities[0][axis], acceleration[axis], wall);
-    float vi = -(vf(velocities[0][axis], acceleration[axis], t));
-    velocities[0][axis] = vf(vi, acceleration[axis], 1.00f - t);
-    if(acceleration[axis] == 0) position[axis] = (top) ? wall - abs(vi*(1.00f - t)) : wall + abs(vi*(1.00f - t));
-    else position[axis] = (top) ? wall - abs(d(velocities[0][axis], vi, acceleration[axis])) : wall + abs(d(velocities[0][axis], vi, acceleration[axis]));
-}
-
-//Velocity and acceleration's unit of time is a frame
-void particle::move(){
-    velocities[0].x+=acceleration.x;
-    velocities[0].y+=acceleration.y;
-
-    translate(velocities[0].x, velocities[0].y);
-
-    /*if(position.x + radius > 1.00f){
-        position.x = position.x - velocities[0].x;
-        collide(true, 0);
-        translate(0.00f, 0.00f);
-    } else if(position.x - radius < -1.00f){
-        position.x = position.x - velocities[0].x;
-        collide(false, 0);
-        translate(0.00f, 0.00f);
-    }
-
-    if(position.y + radius > 1.00f){
-        position.y = position.y - velocities[0].y;
-        collide(true, 1);
-        translate(0.00f, 0.00f);
-    } else if(position.y - radius < -1.00f){
-        position.y = position.y - velocities[0].y;
-        collide(false, 1);
-        translate(0.00f, 0.00f);
-    }*/
-
-    /*if(1.00f - abs(position.x) <= radius) {
-        velocities[0].x = -velocities[0].x;
-    }
-    if(1.00f - abs(position.y) <= radius) {
-        velocities[0].y = -velocities[0].y;
-    }*/
-}

@@ -1,10 +1,15 @@
 #include "renderer.h"
-#include "shapes.h"
+#include "simulation.h"
 
-class cube{
-    public:
+struct cube{
         shape body;
         cube();
+};
+
+struct sphere{
+    shape body;
+    float radius;
+    void generate(int resX, int resY, float radius);
 };
 
 //Camera will also handle movement of the camera
@@ -23,7 +28,9 @@ class camera{
 class scene_3d{
     private:
         int width, height, fps;
-        cube mesh;
+        //cube mesh;
+        sphere mesh;
+        std::vector<glm::vec4> colors;
         std::vector<glm::vec3> positions;
         std::unique_ptr<camera> exposure;
         std::unique_ptr<v_buffer> vb;
@@ -32,11 +39,15 @@ class scene_3d{
         std::unique_ptr<texture> image;
         std::unique_ptr<v_array> va;
         std::unique_ptr<renderer> r;
+
+        glm::vec3 light_pos;
+        glm::vec4 light_color;
+
         const char* cmd;
         FILE* ffmpeg;
         int* buffer;
         GLFWwindow* window;
     public:
-        scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& positions, std::vector<float>& scales, float sensitivity, float speed, float fov, std::string image, std::string program);
-        void run(bool video, bool screen);
+        scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& positions, std::vector<float>& scales, float sensitivity, float speed, float fov, std::string image, std::vector<glm::vec4>& color, std::string program, int resX, int resY, float radius);
+        void run(bool video, bool screen, bool texture);
 };

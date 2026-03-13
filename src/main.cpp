@@ -1,5 +1,5 @@
 #include "renderer.h"
-#include "shapes.h"
+#include "simulation.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <stdio.h>
@@ -24,8 +24,9 @@ int main(){
     };
 
     scene_2d scene(width, height, fps);
-    scene.set_sim_man(balls, 10);
-    //scene.set_sim_fast(10, 10, 1, 100);
+    scene.set_sim_man(balls, 100);
+    //scene.set_sim_fast(20, 10, 0.8);
+    //scene.set_sim_rand(100, 0.01f, 1.0f, 0.01f, 0.01f, 100.0f, 300);
     scene.run(true, false);
     return 0;
 }
@@ -46,10 +47,32 @@ int main(){
     };
 
     std::vector<float> scales = {
-        0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f
+        0.5f, 
+        0.5f, 
+        0.5f, 
+        0.5f, 
+        0.5f, 
+        0.5f, 
+        0.5f, 
+        0.5f, 
+        0.5f, 
+        0.5f
     };
 
-    scene_3d scene(width, height, fps, positions, scales, 0.2f, 2.5f, glm::radians(fov), "../res/textures/obama.jpg", "../res/shaders/3d.shader");
-    scene.run(false, true);
+    std::vector<glm::vec4> colors = {
+    {1.00f, 0.00f, 0.00f, 1.0f},
+    {1.00f, 0.50f, 0.00f, 1.0f},
+    {1.00f, 1.00f, 0.00f, 1.0f},
+    {0.00f, 1.00f, 0.00f, 1.0f},
+    {0.00f, 0.00f, 1.00f, 1.0f},
+    {0.29f, 0.00f, 0.51f, 1.0f},
+    {0.58f, 0.00f, 0.83f, 1.0f},
+    {0.75f, 0.00f, 1.00f, 1.0f},
+    {0.00f, 1.00f, 1.00f, 1.0f},
+    {1.00f, 0.00f, 1.00f, 1.0f},
+};
+
+    scene_3d scene(width, height, fps, positions, scales, 0.2f, 2.5f, glm::radians(fov), "../res/textures/dud.png", colors, "../res/shaders/3d.shader", 500, 500, 1.0f);
+    scene.run(true, true, false);
     return 0;
 }*/

@@ -2,6 +2,7 @@
 
 cube::cube(){
     body.points = {
+        //Points               Texture coords
         -1.0f, -1.0f, 1.0f,    0.0f, 0.0f,
         -1.0f, 1.0f,  1.0f,    0.0f, 1.0f,
          1.0f, 1.0f,  1.0f,    1.0f, 1.0f,
@@ -12,25 +13,115 @@ cube::cube(){
          1.0f, 1.0f,  -1.0f,    0.0f, 1.0f,
          1.0f, -1.0f, -1.0f,    0.0f, 0.0f
     };
-    body.indices = {
-        0, 1, 2,
-        0, 2, 3,
+        body.indices = {
+        0, 2, 1,
+        0, 3, 2,
 
-        3, 2, 6,
-        3, 6, 7,
+        3, 6, 2,
+        3, 7, 6,
 
         0, 1, 5,
-        0, 4, 5,
+        0, 5, 4,
 
-        4, 5, 6,
-        4, 6, 7,
+        7, 5, 6,
+        7, 4, 5,
 
-        1, 5, 6,
-        1, 6, 2,
+        1, 2, 6,
+        1, 6, 5,
 
-        0, 7, 3,
-        0, 4, 7
+        0, 4, 7,
+        0, 7, 3
     };
+}
+
+void sphere::generate(int resX, int resY, float radius){
+    this->radius = radius;
+    int x = 0;
+    int y = 2;
+    float phi, theta, phi_next, theta_next;
+    phi = -90.0f;
+    theta = 0.0f;
+    float sin_phi, cos_phi, sin_theta, cos_theta;
+    sin_phi = sin(glm::radians(phi));
+    cos_phi = cos(glm::radians(phi));
+    sin_theta = sin(glm::radians(theta));
+    cos_theta = cos(glm::radians(theta));
+
+    body.points.emplace_back(cos_phi * radius * sin_theta);
+    body.points.emplace_back(sin_phi * radius);
+    body.points.emplace_back(cos_phi * radius * cos_theta);
+
+    phi = phi + (180.0f/resY);
+
+    int size;
+
+    while(x < resX){
+        sin_phi = sin(glm::radians(phi));
+        cos_phi = cos(glm::radians(phi));
+        sin_theta = sin(glm::radians(theta));
+        cos_theta = cos(glm::radians(theta));
+
+        body.points.emplace_back(cos_phi * radius * sin_theta);
+        body.points.emplace_back(sin_phi * radius);
+        body.points.emplace_back(cos_phi * radius * cos_theta);
+
+        size = body.points.size()/3 - 1;
+
+        body.indices.emplace_back(0);
+        body.indices.emplace_back(size);
+        body.indices.emplace_back(size - 1);
+
+        theta = theta + 360.0f/resX;
+        x++;
+    }
+
+    theta = 0.0f;
+
+    //We are calculating and storing the top point over and over again, but whatever. Good enough
+    while(y <= resY){
+        phi = phi + (180.0f/resY);
+        cos_phi = cos(glm::radians(phi));
+        sin_phi = sin(glm::radians(phi));
+        sin_theta = sin(glm::radians(theta));
+        cos_theta = cos(glm::radians(theta));
+
+        body.points.emplace_back(cos_phi*radius*sin_theta);
+        body.points.emplace_back(sin_phi*radius);
+        body.points.emplace_back(cos_phi*radius*cos_theta);
+
+        while(x < resX){
+            theta = theta + 360.0f/resX;
+            sin_theta = sin(glm::radians(theta));
+            cos_theta = cos(glm::radians(theta));
+
+            body.points.emplace_back(cos_phi*radius*sin_theta);
+            body.points.emplace_back(sin_phi*radius);
+            body.points.emplace_back(cos_phi*radius*cos_theta);
+
+            size = body.points.size()/3 - 1;
+
+            body.indices.emplace_back(size - (1 + resX));
+            body.indices.emplace_back(size - resX);
+            body.indices.emplace_back(size);
+
+            body.indices.emplace_back(size - (1 + resX));
+            body.indices.emplace_back(size);
+            body.indices.emplace_back(size - 1);
+
+            x++;
+        }
+        //body.indices.emplace_back(size - resX);
+        //body.indices.emplace_back(size - (2*resX));
+        //body.indices.emplace_back(size - (resX - 1));
+
+        //body.indices.emplace_back(size - resX);
+        //body.indices.emplace_back(size - (resX - 1));
+        //body.indices.emplace_back(size);
+        theta = 0.0f;
+        x = 0;
+        y++;
+    }
+
 }
 
 camera::camera(int& width, int& height, float& sensitivity, float& speed, float& fov){
@@ -113,7 +204,8 @@ void mouser(GLFWwindow* window, double xpos, double ypos) {
     cam->mouse(window, xpos, ypos);
 }
 
-scene_3d::scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& positions, std::vector<float>& scales, float sensitivity, float speed, float fov, std::string image, std::string program){
+//Scales is useless rn. If you want it to actually do smt, make it change the size of each model
+scene_3d::scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& positions, std::vector<float>& scales, float sensitivity, float speed, float fov, std::string image, std::vector<glm::vec4>& color, std::string program, int resX, int resY, float radius){
     this->fps = fps;
     this->width = width;
     this->height = height;
@@ -144,16 +236,22 @@ scene_3d::scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& po
 
     this->exposure = std::make_unique<camera>(width, height, sensitivity, speed, fov);
     cam = exposure.get();
+    for(int i = 0; i < colors.size(); i++){
+        this->colors.emplace_back(colors[i]);
+    }
     for(int i = 0; i < positions.size(); i++){
         this->positions.emplace_back(positions[i]/scales[i]);
     }
+    this->colors = color;
+
+    mesh.generate(resX, resY, radius);
     this->vb = std::make_unique<v_buffer>(this->mesh.body.points.size()*sizeof(float), this->mesh.body.points.data());
     arrayLayout layout;
     layout.push(3, GL_FLOAT);
-    layout.push(2, GL_FLOAT);
+    //layout.push(2, GL_FLOAT);
     this->va = std::make_unique<v_array>();
     this->va->addBuffer(*this->vb, layout);
-    this->ib = std::make_unique<i_buffer>(this->mesh.body.indices.size() * sizeof(int), this->mesh.body.indices.data());
+    this->ib = std::make_unique<i_buffer>(this->mesh.body.indices.size(), this->mesh.body.indices.data());
     this->program = std::make_unique<shader>(program);
     this->image = std::make_unique<texture>(image);
     this->r = std::make_unique<renderer>();
@@ -161,13 +259,20 @@ scene_3d::scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& po
     //Disable mouse visibility and movement
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
+    //Light
+    this->light_color = {1.0f, 1.0f, 1.0f, 1.0f};
+    this->light_pos = {-20.0f, 10.0f, 0.0f};
+
     //Uniforms
     this->program->bind();
     this->program->setuniformMat4f("projection", this->exposure->projection);
+    this->program->setuniform3f("lightPos", this->light_pos);
+    this->program->setuniform4f("u_LightColor", this->light_color);
     this->image->bind();
 }
 
-void scene_3d::run(bool video, bool screen){
+void scene_3d::run(bool video, bool screen, bool texture){
+    this->program->setuniform1i("u_istext", texture);
     if(video){
         std::string cmd_str = "ffmpeg -r " + std::to_string(fps) + " -f rawvideo -pix_fmt rgba -s " + std::to_string(width) + "x" + std::to_string(height) + " -i - -threads 0 -preset fast -y -pix_fmt yuv420p -crf 21 -vf vflip ../videos/simulation.mp4 -pix_fmt yuv420p";
         this->cmd = cmd_str.c_str();
@@ -186,10 +291,13 @@ void scene_3d::run(bool video, bool screen){
 
         program->setuniformMat4f("view", exposure->view);
 
+
         for(int i = 0; i < positions.size(); i++){
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, positions[i]);
             program->setuniformMat4f("model", model);
+            program->setuniform4f("u_Color", colors[i]);
+            
             r->Draw(*va, *ib, *program);
         }
 

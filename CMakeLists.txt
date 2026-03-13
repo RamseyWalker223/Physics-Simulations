@@ -11,10 +11,10 @@ set(PROJECT_SOURCES
     src/vertexarray.cpp
     src/vertexbuffer.cpp
     src/shape.cpp
-    src/shapes.cpp
     src/texture.cpp
     src/2d.cpp
     src/3d.cpp
+    src/simulation.cpp
 )
 
 # Add executable
@@ -50,16 +50,3 @@ target_link_libraries(${PROJECT_NAME}
     "-framework IOKit"
     "-framework CoreVideo"
 )
-
-#For debug mode:
-# run lldb a
-# These are the usable commands:
-# (lldb) breakpoint set --file src/shapes.cpp --line 92
-# (lldb) settings set target.max-children-depth 15
-# (lldb) run            to start
-# (lldb) next           step over
-# (lldb) step          step into function
-# (lldb) print myVar    show variable
-# (lldb) bt             backtrace (call stack)
-# (lldb) continue       to continue
-# (lldb) exit           to leave

@@ -7,6 +7,7 @@
 
 struct shaderSource{
     std::string vertex;
+    std::string geometry;
     std::string fragment;
 };
 
@@ -19,7 +20,7 @@ class shader{
 
         shaderSource parse(const std::string& file);
         unsigned int CompileShader(unsigned int type, const std::string& source);
-        unsigned int CreateShader(const std::string& vertexShader,  const std::string& fragmentShader);
+        unsigned int CreateShader(const std::string& vertexShader, const std::string& geometryShader, const std::string& fragmentShader);
     public:
         shader(const std::string& filename);
         ~shader();
@@ -29,8 +30,9 @@ class shader{
 
         void setuniform1i(const std::string& name, int poo);
         void setuniform1f(const std::string& name, float value);
-        void setuniform2f(const std::string& name, float v0, float v1);
-        void setuniform4f(const std::string& name, float v0, float v1, float v2, float v3);
+        void setuniform2f(const std::string& name, const glm::vec2& v);
+        void setuniform3f(const std::string& name, const glm::vec3& v);
+        void setuniform4f(const std::string& name, const glm::vec4& v);
         void setuniformMat4f(const std::string& name, const glm::mat4& matrix);
 
 };

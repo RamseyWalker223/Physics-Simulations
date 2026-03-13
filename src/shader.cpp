@@ -8,7 +8,7 @@
 shader::shader(const std::string& filename){
     filepath = filename;
     shaderSource source = parse(filepath);
-    rendererID = CreateShader(source.vertex, source.fragment);
+    rendererID = CreateShader(source.vertex, source.geometry, source.fragment);
 }
 
 shader::~shader(){
@@ -19,16 +19,20 @@ shaderSource shader::parse(const std::string& file){
     std::ifstream input(file);
 
     enum class ShaderType{
-        NONE = -1, VERTEX = 0, FRAGMENT = 1
+        NONE = -1, VERTEX = 0, GEOMETRY = 1, FRAGMENT = 2
     };
 
     std::string line;
-    std::stringstream files[2];
+    std::stringstream files[3];
     ShaderType type = ShaderType::NONE;
     while(getline(input, line)){
         if(line.find("#shader") != std::string::npos){
             if(line.find("vertex") != std::string::npos){
                 type = ShaderType::VERTEX;
+                continue;
+            }
+            else if(line.find("geometry") != std::string::npos){
+                type = ShaderType::GEOMETRY;
                 continue;
             }
             else if(line.find("fragment") != std::string::npos){
@@ -38,7 +42,7 @@ shaderSource shader::parse(const std::string& file){
         }
         files[(int)type] << line << "\n";
     }
-    return { files[0].str(), files[1].str() };
+    return { files[0].str(), files[1].str(), files[2].str() };
 }
 
 unsigned int shader::CompileShader(unsigned int type, const std::string& source){
@@ -69,12 +73,14 @@ unsigned int shader::CompileShader(unsigned int type, const std::string& source)
     return id;
 }
 
-unsigned int shader::CreateShader(const std::string& vertexShader,  const std::string& fragmentShader){
+unsigned int shader::CreateShader(const std::string& vertexShader, const std::string& geometryShader, const std::string& fragmentShader){
     CALL(unsigned int program = glCreateProgram());
     unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
+    unsigned int gs = CompileShader(GL_GEOMETRY_SHADER, geometryShader);
     unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
 
     CALL(glAttachShader(program, vs));
+    CALL(glAttachShader(program, gs));
     CALL(glAttachShader(program, fs));
     CALL(glLinkProgram(program));
     int result;
@@ -95,6 +101,7 @@ unsigned int shader::CreateShader(const std::string& vertexShader,  const std::s
     CALL(glValidateProgram(program));
 
     CALL(glDeleteShader(vs));
+    CALL(glDeleteShader(gs));
     CALL(glDeleteShader(fs));
 
     return program;
@@ -130,12 +137,16 @@ void shader::setuniform1f(const std::string& name, float value){
     CALL(glUniform1f(uniform_location(name), value));
 }
 
-void shader::setuniform2f(const std::string& name, float v0, float v1){
-    CALL(glUniform2f(uniform_location(name), v0, v1));
+void shader::setuniform2f(const std::string& name, const glm::vec2& v){
+    CALL(glUniform2f(uniform_location(name), v.x, v.y));
 }
 
-void shader::setuniform4f(const std::string& name, float v0, float v1, float v2, float v3){
-    CALL(glUniform4f(uniform_location(name), v0, v1, v2, v3));
+void shader::setuniform3f(const std::string& name, const glm::vec3& v){
+    CALL(glUniform3f(uniform_location(name), v.x, v.y, v.z));
+}
+
+void shader::setuniform4f(const std::string& name, const glm::vec4& v){
+    CALL(glUniform4f(uniform_location(name), v.x, v.y, v.z, v.w));
 }
 
 void shader::setuniformMat4f(const std::string& name, const glm::mat4& matrix){
