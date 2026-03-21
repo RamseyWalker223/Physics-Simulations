@@ -52,12 +52,19 @@ void sphere::generate(int resX, int resY, float radius){
     body.points.emplace_back(cos_phi * radius * cos_theta);
 
     phi = phi + (180.0f/resY);
+    sin_phi = sin(glm::radians(phi));
+    cos_phi = cos(glm::radians(phi));
+    sin_theta = sin(glm::radians(theta));
+    cos_theta = cos(glm::radians(theta));
+
+    body.points.emplace_back(cos_phi * radius * sin_theta);
+    body.points.emplace_back(sin_phi * radius);
+    body.points.emplace_back(cos_phi * radius * cos_theta);
 
     int size;
 
     while(x < resX){
-        sin_phi = sin(glm::radians(phi));
-        cos_phi = cos(glm::radians(phi));
+        theta = theta + 360.0f/resX;
         sin_theta = sin(glm::radians(theta));
         cos_theta = cos(glm::radians(theta));
 
@@ -70,8 +77,6 @@ void sphere::generate(int resX, int resY, float radius){
         body.indices.emplace_back(0);
         body.indices.emplace_back(size);
         body.indices.emplace_back(size - 1);
-
-        theta = theta + 360.0f/resX;
         x++;
     }
 

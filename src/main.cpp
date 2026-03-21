@@ -24,9 +24,9 @@ int main(){
     };
 
     scene_2d scene(width, height, fps);
-    scene.set_sim_man(balls, 100);
-    //scene.set_sim_fast(20, 10, 0.8);
-    //scene.set_sim_rand(100, 0.01f, 1.0f, 0.01f, 0.01f, 100.0f, 300);
+    //scene.set_sim_man(balls, 100);
+    //scene.set_sim_fast(25, 10, 0.8);
+    scene.set_sim_rand(200, 0.01f, 0.75f, 0.005f, 0.01f, 100.0f, 1000);
     scene.run(true, false);
     return 0;
 }
@@ -72,7 +72,7 @@ int main(){
     {1.00f, 0.00f, 1.00f, 1.0f},
 };
 
-    scene_3d scene(width, height, fps, positions, scales, 0.2f, 2.5f, glm::radians(fov), "../res/textures/dud.png", colors, "../res/shaders/3d.shader", 500, 500, 1.0f);
-    scene.run(true, true, false);
+    scene_3d scene(width, height, fps, positions, scales, 0.2f, 2.5f, glm::radians(fov), "../res/textures/dud.png", colors, "../res/shaders/3d.shader", 200, 200, 1.0f);
+    scene.run(false, true, false);
     return 0;
 }*/

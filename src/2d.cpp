@@ -43,11 +43,11 @@ void scene_2d::set_sim_fast(int ballX, int ballY, float radius_shrinker){
         float y_pos = spacing*(float)y - 1.0f + spacing/2.0f;
         for(int x = 0; x < ballX; x++){
             float x_pos = spacing*(float)x - aspect + spacing/2.0f;
-            std::list<float> elements = {x_pos, y_pos, 0.005f, 0.005f, 0.0f, 0.0f, 1.0f, radius, 1.0f, 0.1f, 0.0f, 1.0f};
+            std::list<float> elements = {x_pos, y_pos, 0.005f, 0.05f, 0.0f, 0.0f, 1.0f, radius, 1.0f, 0.1f, 0.0f, 1.0f};
             balls.insert(balls.end(), elements.begin(), elements.end());
         }
     }
-    this->world = std::make_unique<simulation>(balls, "../res/shaders/circle.shader", aspect, 500);
+    this->world = std::make_unique<simulation>(balls, "../res/shaders/circle.shader", aspect, 1000);
 }
 
 void scene_2d::set_sim_rand(int count, float min_radius, float max_radius, float max_speed, float min_mass, float max_mass, int time){
@@ -93,7 +93,6 @@ void scene_2d::set_sim_rand(int count, float min_radius, float max_radius, float
         balls.insert(balls.end(), elements.begin(), elements.end());
         placed_count++;
     }
-    std::cout << "balls generated\n";
     this->world = std::make_unique<simulation>(balls, "../res/shaders/circle.shader", aspect, time);
 }
 

@@ -39,7 +39,9 @@ struct particle{
     t_vector position, velocity;
     std::optional<std::list<event>::iterator> collision;
     void move(float dt);
-    event next_collision(float& time, int spot);
+    //This boolean reference is true if its a brand new time, and false if the time doesnt change
+    //The function returns false if no new collision was made and true if one was made.
+    bool next_collision(float& time, collision_type& type, bool& new_time);
 };
 
 struct particle_m{
@@ -65,31 +67,29 @@ struct change{
     friend bool operator<(const change& a, const int& b) { return a.ball < b; }
     friend bool operator<(const int& a, const change& b) { return a < b.ball; }
     change() = default;
-    change(event& e, int index);
+    change(event& e, int index, const float& time);
 };
 
 struct event{
     float* time;
     collision_type type = NONE;
     change balls[2];
-    event(float& t, collision_type type, particle* foo, int spot){
-        time = &t;
+    event(){
+        time = nullptr;
+    }
+    event(collision_type type, int ballA, int ballB, float* t){
         this->type = type;
-        balls[0].ball = spot;
-        balls[0].position = foo->position;
-        balls[0].velocity = foo->velocity;
-        balls[0].position.interpolate(t - foo->time, foo->velocity);
+        balls[0].ball = ballA;
+        balls[1].ball = ballB;
+        time = t;
     }
 };
 
 struct moment_f{
     float t;
-    mutable std::list<event> events;
-    bool operator<(const moment_f& other) const { return t < other.t; }
-    friend bool operator<(const moment_f& a, const float& b) { return a.t < b; }
-    friend bool operator<(const float& a, const moment_f& b) { return a < b.t; }
-    moment_f(float& t);
-    std::list<event>::iterator add_event(event& e) const;
+    std::list<event> events;
+    moment_f() = default;
+    void add_event(collision_type type, int ball_a, int ball_b);
 };
 
 struct moment_i{
@@ -103,15 +103,14 @@ struct moment_i{
 
 struct simulation{
     int time, timer;
-    float aspect;
-    std::stack<std::pair<int, std::set<int>>> queue;
+    float aspect, sim_time;
+    moment_f collision;
     std::vector<particle> objects;
     std::vector<particle_m> objects_m;
-    std::set<moment_f, std::less<>> key_moments;
-    std::set<moment_i, std::less<>> framed_moments;
+    std::set<moment_i, std::less<>> moments;
     simulation(std::vector<float>& points, std::string source, float aspect, int time);
     void simulate();
-    void predict(const int& ball, const std::set<int>& exceptions);
-    bool resolve(event& e);
+    bool predict();
+    float resolve(event& e);
     bool run();
 };

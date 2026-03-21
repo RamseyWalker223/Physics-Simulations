@@ -1,10 +1,10 @@
 #include "simulation.h"
 
-change::change(event& e, int index){
+change::change(event& e, int index, const float& time){
     this->ball = e.balls[index].ball;
     this->position = e.balls[index].position;
     this->velocity = e.balls[index].velocity;
-    float Δt = std::ceil(*e.time) - *e.time;
+    float Δt = time - *e.time;
     this->position.interpolate(Δt, this->velocity);
 }
 
@@ -12,15 +12,60 @@ moment_i::moment_i(int& t){
     this->t = t;
 }
 
-moment_f::moment_f(float& t){
-    this->t = t;
+void moment_f::add_event(collision_type type, int ball_a, int ball_b){
+    events.emplace(events.end(), type, ball_a, ball_b, &t);
 }
 
-std::list<event>::iterator moment_f::add_event(event& e) const{
-    std::list<event>::iterator returner = events.insert(events.begin(), e);
+bool simulation::predict(){
+    collision.t = timer;
+    collision_type type = NONE;
 
-    returner->time = const_cast<float*>(&this->t);
-    return returner;
+    for(int i = 0; i < objects.size(); i++){
+        objects[i].move(sim_time - objects[i].time);
+    }
+
+    std::set<int> exceptions = {};
+    for(int i = 0; i < objects.size(); i++){
+        exceptions.emplace(i);
+        
+        bool new_time = false;
+        if(objects[i].next_collision(collision.t, type, new_time)){
+            if(new_time){
+                collision.events.clear();
+            }
+            collision.add_event(type, i, -1);
+        }
+
+        for(int x = 0; x < objects.size(); x++){
+            if(exceptions.find(x) != exceptions.end()) continue;
+            float Δx, Δy, Δvx, Δvy, a, b, c, Δx2, Δy2;
+            Δx = objects[i].position.x - objects[x].position.x;
+            Δy = objects[i].position.y - objects[x].position.y;
+            Δvx = objects[i].velocity.x - objects[x].velocity.x;
+            Δvy = objects[i].velocity.y - objects[x].velocity.y;
+            b = 2*(Δx*Δvx + Δy*Δvy);
+            if(b >= 0) continue;
+            Δx2 = pow(Δx, 2);
+            Δy2 = pow(Δy, 2);
+            a = pow(Δvx, 2) + pow(Δvy, 2);
+            c = Δx2 + Δy2 - pow(objects[i].radius + objects[x].radius, 2);
+            //Computing the disrcriminant for every single ball is a lot. Coming up with an optimization in the future will make this process more worth it
+            float discriminant = pow(b, 2) - 4*a*c;
+            if(discriminant <= 0) continue;
+            //We always take the smaller one, even if it is negative, cause the larger one will always require the balls to phase thru each other.
+            float new_T = std::min((-b + sqrt(discriminant))/(2*a), (-b - sqrt(discriminant))/(2*a)) + sim_time;
+            if(new_T <= collision.t && new_T >= sim_time){
+                if(abs(collision.t - new_T) > 1e-7f) {
+                    collision.events.clear();
+                    collision.t = new_T;
+                }
+                type = BALL;
+                collision.add_event(type, i, x);
+            }
+        }
+    }
+    if(type == NONE) return false;
+    return true;
 }
 
 simulation::simulation(std::vector<float>& points, std::string source, float aspect, int timer){
@@ -32,120 +77,42 @@ simulation::simulation(std::vector<float>& points, std::string source, float asp
     }
 }
 
-void simulation::predict(const int& ball, const std::set<int>& exceptions){
-    float t = timer;
-    event collision = objects[ball].next_collision(t, ball);
-    for(int i = 0; i < objects.size(); i++){
-        if(exceptions.find(i) != exceptions.end()) continue;
-        //Make sure both balls are at the same time. We also need to make sure that when we move the ball to the right time, we dont move past the time of its next collision
-        //When in doubt this is a good place to check out for bugs
-        if(objects[ball].time != objects[i].time) objects[i].move(objects[ball].time - objects[i].time);
-        float Δx, Δy, Δvx, Δvy, a, b, c, Δx2, Δy2;
-        Δx = objects[ball].position.x - objects[i].position.x;
-        Δy = objects[ball].position.y - objects[i].position.y;
-        Δvx = objects[ball].velocity.x - objects[i].velocity.x;
-        Δvy = objects[ball].velocity.y - objects[i].velocity.y;
-        Δx2 = pow(Δx, 2);
-        Δy2 = pow(Δy, 2);
-        a = pow(Δvx, 2) + pow(Δvy, 2);
-        b = 2*(Δx*Δvx + Δy*Δvy);
-        c = Δx2 + Δy2 - pow(objects[ball].radius + objects[i].radius, 2);
-        //Computing the disrcriminant for every single ball is a lot. Coming up with an optimization in the future will make this process more worth it
-        float discriminant = pow(b, 2) - 4*a*c;
-        if(discriminant <= 0) continue;
-        //We always take the smaller one, even if it is negative, cause the larger one will always require the balls to phase thru each other.
-        float new_T = std::min((-b + sqrt(discriminant))/(2*a), (-b - sqrt(discriminant))/(2*a)) + objects[ball].time;
-        float bT = (!objects[i].collision) ? timer : *objects[i].collision.value()->time;
-        if(new_T < t && new_T < bT && new_T > objects[ball].time) {
-            t = new_T;
-            collision.balls[1].ball = i;
-            collision.type = BALL;
-        }
-    }
-    if(collision.type != NONE){
-        if(key_moments.find(t) == key_moments.end()) key_moments.emplace(t);
-        objects[ball].collision = key_moments.find(t)->add_event(collision);
-    } else {
-        objects[ball].collision.reset();
-    }
-
-    if(collision.type == BALL){
-        if(objects[collision.balls[1].ball].collision && objects[collision.balls[1].ball].collision.value()->type == BALL){
-            bool index = (collision.balls[1].ball == objects[collision.balls[1].ball].collision.value()->balls[1].ball) ? false : true;
-            objects[objects[collision.balls[1].ball].collision.value()->balls[index].ball].collision.reset();
-            queue.emplace(objects[collision.balls[1].ball].collision.value()->balls[index].ball, std::set<int>{objects[collision.balls[1].ball].collision.value()->balls[index].ball, collision.balls[0].ball, collision.balls[1].ball});
-        }
-        if(objects[collision.balls[1].ball].collision) objects[collision.balls[1].ball].collision.value()->type = NONE;
-        objects[collision.balls[1].ball].collision = objects[ball].collision;
-    }
-}
-
 void simulation::simulate(){
+    sim_time = 0.0f;
     for(int i = 0; i < objects_m.size(); i++){
         objects.emplace_back(objects_m[i].ball);
     }
-    std::set<int> exceptions = {};
-    for(int i = 0; i < objects.size(); i++){
-        exceptions.emplace(i);
-        queue.emplace(i, exceptions);
-    }
-    while(!queue.empty()){
-        std::pair<int, std::set<int>> x = queue.top();
-        queue.pop();
-        predict(x.first, x.second);
-    }
-    
-    bool quit = false;
-    while(!quit){
-        quit = false;
-        for(int i = 0; i < objects.size(); i++){
-            if(objects[i].collision) quit = resolve(*objects[i].collision.value());
-            while(!queue.empty()){
-                std::pair<int, std::set<int>> x = queue.top();
-                queue.pop();
-                predict(x.first, x.second);
+
+    while(predict()){
+        sim_time = collision.t;
+        std::cout << (sim_time*100.0f)/(float)timer << "%\n";
+        int framed_time = (int)std::round(collision.t);
+        auto it = moments.emplace(framed_time);
+        for(auto i = collision.events.begin(); i != collision.events.end(); i++){
+            resolve(*i);
+            for(int x = 0; x < 2; x++){
+                if(i->balls[x].ball == -1) continue;
+                auto check = it.first->events.find(i->balls[x].ball);
+                if(check != it.first->events.end()) it.first->events.erase(check);
+                it.first->events.emplace(*i, x, (float)framed_time);
             }
         }
     }
 
-    //Please help me
-    for(auto i = key_moments.begin(); i != key_moments.end(); i++){
-        int tick = (int)std::ceil(i->t);
-        auto it = framed_moments.find(tick);
-        if(it == framed_moments.end()) { it = framed_moments.emplace(tick).first; }
-        for(auto x = i->events.begin(); x != i->events.end(); x++){
-            if(x->type == NONE) continue;
-            int max = (x->type == BALL) ? 2 : 1;
-            for(int j = 0; j < max; j++){
-                auto poop = it->events.find(x->balls[j].ball);
-                if(poop != it->events.end()){
-                    //sus
-                    it->events.erase(poop);
-                }
-                it->events.emplace(*x, j);
-            }
-        }
-    }
 }
 
-bool simulation::resolve(event& e){
+float simulation::resolve(event& e){
     if(e.type == NONE){
-        return false;
+        return -1.0f;
     } else {
         objects[e.balls[0].ball].move(*e.time - objects[e.balls[0].ball].time);
         e.balls[0].position = objects[e.balls[0].ball].position;
-
         if(e.type == WALL){
             objects[e.balls[0].ball].velocity.x = objects[e.balls[0].ball].velocity.x * -1.0f;
             e.balls[0].velocity = objects[e.balls[0].ball].velocity;
-
-
-            queue.emplace(e.balls[0].ball, std::set<int>{e.balls[0].ball});
         } else if(e.type == CEILING){
             objects[e.balls[0].ball].velocity.y = objects[e.balls[0].ball].velocity.y * -1.0f;
             e.balls[0].velocity = objects[e.balls[0].ball].velocity;
-
-            queue.emplace(e.balls[0].ball, std::set<int>{e.balls[0].ball});
         }else if(e.type == BALL){
             objects[e.balls[1].ball].move(*e.time - objects[e.balls[1].ball].time);
             e.balls[1].position = objects[e.balls[1].ball].position;
@@ -203,20 +170,17 @@ bool simulation::resolve(event& e){
 
             e.balls[0].velocity = objects[e.balls[0].ball].velocity;
             e.balls[1].velocity = objects[e.balls[1].ball].velocity;
-
-            queue.emplace(e.balls[0].ball, std::set<int>{e.balls[0].ball, e.balls[1].ball});
-            queue.emplace(e.balls[1].ball, std::set<int>{e.balls[0].ball, e.balls[1].ball});
         }
     }
-    return true;
+    return *e.time;
 }
 
 bool simulation::run(){
     CALL(glClear(GL_COLOR_BUFFER_BIT));
 
     std::set<int> exclusions = {};
-    auto i = framed_moments.find(time);
-    if(i != framed_moments.end()){
+    auto i = moments.find(time);
+    if(i != moments.end()){
         for(auto x = i->events.begin(); x != i->events.end(); x++){
             exclusions.insert(x->ball);
             objects_m[x->ball].ball.position = x->position;

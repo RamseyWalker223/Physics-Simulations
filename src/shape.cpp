@@ -7,19 +7,25 @@ void particle::move(float dt){
     position.interpolate(dt, velocity);
 }
 
-event particle::next_collision(float& timer, int spot){
+bool particle::next_collision(float& timer, collision_type& type, bool& new_time){
     //Calculating which wall it will hit first is easier right now, but with accelleration that will become more difficult. And t will NEVER be less than objects[ball].time
-    collision_type type = NONE;
-    if(collision && time != *collision.value()->time) move(*collision.value()->time - time);
+
+    float reference = timer;
+
+    bool collided = false;
     
     float dx = aspect - radius;
     
     if(velocity.x < 0) dx*=-1.0f;
     dx = dx - position.x;
     float tx = dx/velocity.x + time;
-    if(tx < timer && tx > time){
-        timer = tx;
+    if(tx <= timer && tx >= time){
+        if(timer != tx) {
+            new_time = true;
+            timer = tx;
+        }
         type = WALL;
+        collided = true;
     }
 
     float dy = 1.0f - radius;
@@ -27,11 +33,17 @@ event particle::next_collision(float& timer, int spot){
     if(velocity.y < 0) dy*=-1.0f;
     dy = dy - position.y;
     float ty = dy/velocity.y + time;
-    if(ty < timer && ty > time){
-        timer = ty;
+    if(ty <= timer && ty >= time){
+        if(timer != ty) {
+            new_time = true;
+            timer = ty;
+        } else {
+            new_time = false;
+        }
         type = CEILING;
+        collided = true;
     }
-    return { timer, type, this, spot };
+    return collided;
 }
 
 particle_m::particle_m(float x, float y, float vx, float vy, float ax, float ay, float mass, float radius, std::string source, float aspect, float r, float g, float b, float a){
