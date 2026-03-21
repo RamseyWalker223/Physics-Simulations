@@ -1,3 +1,4 @@
 build/
 videos/
 .vscode/
+.DS_Store
