@@ -1,11 +1,17 @@
 #include "simulation.h"
 
+//No acceleration for now, which makes interpolation really easy. 😎
+void simulation::interpolate(const float& time, glm::vec2& p, const glm::vec2& v){
+    p.x = v.x*time + p.x;
+    p.y = v.y*time + p.y;
+}
+
 change::change(event& e, int index, const float& time){
     this->ball = e.balls[index].ball;
     this->position = e.balls[index].position;
     this->velocity = e.balls[index].velocity;
     float Δt = time - *e.time;
-    this->position.interpolate(Δt, this->velocity);
+    simulation::interpolate(Δt, this->position, this->velocity);
 }
 
 moment_i::moment_i(int& t){
@@ -45,11 +51,12 @@ bool simulation::predict(){
             Δvy = objects[i].velocity.y - objects[x].velocity.y;
             b = 2*(Δx*Δvx + Δy*Δvy);
             if(b >= 0) continue;
+            //Computing the zeroes for every single ball is a lot. We fix this by taking the derivative of the distance function at t = 0 (AKA b).
+            //If its >= 0, (the balls are increasing in distance at this instant) then we continue.
             Δx2 = pow(Δx, 2);
             Δy2 = pow(Δy, 2);
             a = pow(Δvx, 2) + pow(Δvy, 2);
             c = Δx2 + Δy2 - pow(objects[i].radius + objects[x].radius, 2);
-            //Computing the disrcriminant for every single ball is a lot. Coming up with an optimization in the future will make this process more worth it
             float discriminant = pow(b, 2) - 4*a*c;
             if(discriminant <= 0) continue;
             //We always take the smaller one, even if it is negative, cause the larger one will always require the balls to phase thru each other.
@@ -79,6 +86,7 @@ simulation::simulation(std::vector<float>& points, std::string source, float asp
 
 void simulation::simulate(){
     sim_time = 0.0f;
+
     for(int i = 0; i < objects_m.size(); i++){
         objects.emplace_back(objects_m[i].ball);
     }
@@ -98,12 +106,11 @@ void simulation::simulate(){
             }
         }
     }
-
 }
 
-float simulation::resolve(event& e){
+void simulation::resolve(event& e){
     if(e.type == NONE){
-        return -1.0f;
+        return;
     } else {
         objects[e.balls[0].ball].move(*e.time - objects[e.balls[0].ball].time);
         e.balls[0].position = objects[e.balls[0].ball].position;
@@ -117,62 +124,30 @@ float simulation::resolve(event& e){
             objects[e.balls[1].ball].move(*e.time - objects[e.balls[1].ball].time);
             e.balls[1].position = objects[e.balls[1].ball].position;
 
-            float x1, x2, y1, y2, θ;
-            x1 = objects[e.balls[0].ball].position.x;
-            x2 = objects[e.balls[1].ball].position.x;
-            y1 = objects[e.balls[0].ball].position.y;
-            y2 = objects[e.balls[1].ball].position.y;
-            bool x, y, flat;
-            x = x2 > x1;
-            y = y2 > y1;
-            flat = x2 == x1;
-            if(!flat){
-                θ = atan((y2 - y1)/(x2 - x1));
-                if(y){
-                    if(x){
-                        θ = -θ;
-                    } else {
-                        θ = abs(θ);
-                    }
-                } else {
-                    if(x){
-                        θ = abs(θ);
-                    } else {
-                        θ = -θ;
-                    }
-                }
-            } else {
-                θ = M_PI/2.0f;
-            }
-            float v1x, v2x, v1y, v2y, v1n, v2n, v1t, v2t, v1nf, v2nf, sinθ, cosθ, m1, m2, masses;
-            v1x = objects[e.balls[0].ball].velocity.x;
-            v1y = objects[e.balls[0].ball].velocity.y;
-            v2x = objects[e.balls[1].ball].velocity.x;
-            v2y = objects[e.balls[1].ball].velocity.y;
-            sinθ = sin(θ);
-            cosθ = cos(θ);
-            v1n = (v1x * cosθ) - (v1y * sinθ);
-            v1t = (v1x * sinθ) + (v1y * cosθ);
-            v2n = (v2x * cosθ) - (v2y * sinθ);
-            v2t = (v2x * sinθ) + (v2y * cosθ);
-            m1 = objects[e.balls[0].ball].mass;
-            m2 = objects[e.balls[1].ball].mass;
-            masses = m1 + m2;
-            v1nf = (v1n * (m1 - m2))/masses + (2 * m2 * v2n)/masses;
-            v2nf = (v2n * (m2 - m1))/masses + (2 * m1 * v1n)/masses;
-            sinθ = sin(-θ);
-            cosθ = cos(-θ);
+            glm::vec2 dir;
+            float v1n, v2n, v1nf, v2nf, masses;
 
-            objects[e.balls[0].ball].velocity.x = (v1nf * cosθ) - (v1t * sinθ);
-            objects[e.balls[0].ball].velocity.y = (v1nf * sinθ) + (v1t * cosθ);
-            objects[e.balls[1].ball].velocity.x = (v2nf * cosθ) - (v2t * sinθ);
-            objects[e.balls[1].ball].velocity.y = (v2nf * sinθ) + (v2t * cosθ);
+            dir = {objects[e.balls[0].ball].position - objects[e.balls[1].ball].position};
+            dir = glm::normalize(dir);
+
+            v1n = glm::dot(dir, objects[e.balls[0].ball].velocity);
+            v2n = glm::dot(dir, objects[e.balls[1].ball].velocity);
+
+            objects[e.balls[0].ball].velocity = objects[e.balls[0].ball].velocity - (v1n * dir);
+            objects[e.balls[1].ball].velocity = objects[e.balls[1].ball].velocity - (v2n * dir);
+
+            masses = objects[e.balls[0].ball].mass + objects[e.balls[1].ball].mass;
+
+            v1nf = (v1n * (objects[e.balls[0].ball].mass - objects[e.balls[1].ball].mass))/masses + (2 * objects[e.balls[1].ball].mass * v2n)/masses;
+            v2nf = (v2n * (objects[e.balls[1].ball].mass - objects[e.balls[0].ball].mass))/masses + (2 * objects[e.balls[0].ball].mass * v1n)/masses;
+
+            objects[e.balls[0].ball].velocity = (v1nf*dir) + objects[e.balls[0].ball].velocity;
+            objects[e.balls[1].ball].velocity = (v2nf*dir) + objects[e.balls[1].ball].velocity;
 
             e.balls[0].velocity = objects[e.balls[0].ball].velocity;
             e.balls[1].velocity = objects[e.balls[1].ball].velocity;
         }
     }
-    return *e.time;
 }
 
 bool simulation::run(){

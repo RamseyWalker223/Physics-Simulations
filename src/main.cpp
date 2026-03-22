@@ -26,8 +26,8 @@ int main(){
     scene_2d scene(width, height, fps);
     //scene.set_sim_man(balls, 100);
     //scene.set_sim_fast(25, 10, 0.8);
-    scene.set_sim_rand(200, 0.01f, 0.75f, 0.005f, 0.01f, 100.0f, 1000);
-    scene.run(true, false);
+    scene.set_sim_rand(200, 0.01f, 0.75f, 0.00f, 0.01f, 100.0f, 1000);
+    scene.run(true, true);
     return 0;
 }
 

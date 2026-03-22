@@ -1,0 +1,1 @@
+dont forget to remind them to add a build/ and videos/ directory

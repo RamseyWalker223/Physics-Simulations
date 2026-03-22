@@ -4,7 +4,7 @@
 
 void particle::move(float dt){
     this->time += dt;
-    position.interpolate(dt, velocity);
+    simulation::interpolate(dt, position, velocity);
 }
 
 bool particle::next_collision(float& timer, collision_type& type, bool& new_time){

@@ -7,24 +7,6 @@
 
 enum collision_type{ NONE, WALL, CEILING, BALL };
 
-struct t_vector{
-    float x, y;
-    float& operator[](int i){
-        switch(i){
-            case 0:
-                return x;
-            case 1:
-                return y;
-            default: throw std::out_of_range("oops.");
-        }
-    }
-    //No acceleration for now, which makes interpolation really easy. 😎
-    void interpolate(const float& time, const t_vector& v){
-        this->x = v.x*time + this->x;
-        this->y = v.y*time + this->y;
-    }
-};
-
 struct shape{
     std::vector<float> points;
     std::vector<float> texture_coords;
@@ -36,7 +18,7 @@ struct event;
 
 struct particle{
     float radius, mass, time, aspect;
-    t_vector position, velocity;
+    glm::vec2 position, velocity;
     std::optional<std::list<event>::iterator> collision;
     void move(float dt);
     //This boolean reference is true if its a brand new time, and false if the time doesnt change
@@ -61,8 +43,8 @@ struct particle_m{
 
 struct change{
     int ball;
-    t_vector position;
-    t_vector velocity;
+    glm::vec2 position;
+    glm::vec2 velocity;
     bool operator<(const change& other) const { return ball < other.ball; }
     friend bool operator<(const change& a, const int& b) { return a.ball < b; }
     friend bool operator<(const int& a, const change& b) { return a < b.ball; }
@@ -109,8 +91,9 @@ struct simulation{
     std::vector<particle_m> objects_m;
     std::set<moment_i, std::less<>> moments;
     simulation(std::vector<float>& points, std::string source, float aspect, int time);
+    static void interpolate(const float& time, glm::vec2& p, const glm::vec2& v);
     void simulate();
     bool predict();
-    float resolve(event& e);
+    void resolve(event& e);
     bool run();
 };

@@ -279,7 +279,7 @@ scene_3d::scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& po
 void scene_3d::run(bool video, bool screen, bool texture){
     this->program->setuniform1i("u_istext", texture);
     if(video){
-        std::string cmd_str = "ffmpeg -r " + std::to_string(fps) + " -f rawvideo -pix_fmt rgba -s " + std::to_string(width) + "x" + std::to_string(height) + " -i - -threads 0 -preset fast -y -pix_fmt yuv420p -crf 21 -vf vflip ../videos/simulation.mp4 -pix_fmt yuv420p";
+        std::string cmd_str = "ffmpeg -r " + std::to_string(fps) + " -f rawvideo -pix_fmt rgba -s " + std::to_string(width) + "x" + std::to_string(height) + " -i - -threads 0 -preset fast -y -pix_fmt yuv444p -crf 0 -vf vflip ../videos/simulation.mp4";
         this->cmd = cmd_str.c_str();
 
         this->ffmpeg = popen(cmd, "w");
