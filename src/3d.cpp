@@ -37,96 +37,107 @@ cube::cube(){
 void sphere::generate(int resX, int resY, float radius){
     this->radius = radius;
     int x = 0;
-    int y = 2;
-    float phi, theta, phi_next, theta_next;
+    int y = 1;
+    float phi, theta, phi_next, theta_next, sin_phi, cos_phi, sin_theta, cos_theta, texture_x, texture_y, inc_x, inc_y, inc_tex_x, inc_tex_y;
     phi = -90.0f;
     theta = 0.0f;
-    float sin_phi, cos_phi, sin_theta, cos_theta;
+
+    inc_x = 360.0f/resX;
+    inc_y = (180.0f/resY);
+
+    inc_tex_x = 1.0f/resX;
+    inc_tex_y = 1.0f/resY;
+
     sin_phi = sin(glm::radians(phi));
     cos_phi = cos(glm::radians(phi));
     sin_theta = sin(glm::radians(theta));
     cos_theta = cos(glm::radians(theta));
 
-    body.points.emplace_back(cos_phi * radius * sin_theta);
-    body.points.emplace_back(sin_phi * radius);
-    body.points.emplace_back(cos_phi * radius * cos_theta);
+    texture_x = 0.0f;
+    texture_y = 0.0f;
 
-    phi = phi + (180.0f/resY);
-    sin_phi = sin(glm::radians(phi));
-    cos_phi = cos(glm::radians(phi));
-    sin_theta = sin(glm::radians(theta));
-    cos_theta = cos(glm::radians(theta));
+    float a, b, c;
 
-    body.points.emplace_back(cos_phi * radius * sin_theta);
-    body.points.emplace_back(sin_phi * radius);
-    body.points.emplace_back(cos_phi * radius * cos_theta);
+    a = cos_phi * radius * sin_theta;
+    b = sin_phi * radius;
+    c = cos_phi * radius * cos_theta;
 
-    int size;
+    glm::vec3 normal(a, b, c);
+    normal = glm::normalize(normal);
 
     while(x < resX){
-        theta = theta + 360.0f/resX;
-        sin_theta = sin(glm::radians(theta));
-        cos_theta = cos(glm::radians(theta));
+        body.points.emplace_back(a);
+        body.points.emplace_back(b);
+        body.points.emplace_back(c);
 
-        body.points.emplace_back(cos_phi * radius * sin_theta);
-        body.points.emplace_back(sin_phi * radius);
-        body.points.emplace_back(cos_phi * radius * cos_theta);
+        body.points.emplace_back(normal.x);
+        body.points.emplace_back(normal.y);
+        body.points.emplace_back(normal.z);
 
-        size = body.points.size()/3 - 1;
+        body.points.emplace_back(texture_x);
+        body.points.emplace_back(texture_y);
 
-        body.indices.emplace_back(0);
-        body.indices.emplace_back(size);
-        body.indices.emplace_back(size - 1);
         x++;
+        texture_x = texture_x + inc_tex_x;
     }
+    
+    int size;
 
-    theta = 0.0f;
-
-    //We are calculating and storing the top point over and over again, but whatever. Good enough
     while(y <= resY){
-        phi = phi + (180.0f/resY);
+        theta = 0.0f;
+        texture_x = 0.0f;
+        phi = phi + inc_y;
+        texture_y = texture_y + inc_tex_y;
         cos_phi = cos(glm::radians(phi));
         sin_phi = sin(glm::radians(phi));
         sin_theta = sin(glm::radians(theta));
         cos_theta = cos(glm::radians(theta));
-
-        body.points.emplace_back(cos_phi*radius*sin_theta);
-        body.points.emplace_back(sin_phi*radius);
-        body.points.emplace_back(cos_phi*radius*cos_theta);
-
+        
+        x = 0;
         while(x < resX){
-            theta = theta + 360.0f/resX;
+            normal = glm::vec3(cos_phi*radius*sin_theta, sin_phi*radius, cos_phi*radius*cos_theta);
+            
+            body.points.emplace_back(normal.x);
+            body.points.emplace_back(normal.y);
+            body.points.emplace_back(normal.z);
+
+            normal = glm::normalize(normal);
+
+            body.points.emplace_back(normal.x);
+            body.points.emplace_back(normal.y);
+            body.points.emplace_back(normal.z);
+
+            size = body.points.size()/8 - 1;
+
+            if(y == 1){
+                body.indices.emplace_back(size);
+                body.indices.emplace_back(size - 1);
+                body.indices.emplace_back(x);
+
+                body.indices.emplace_back(size - 1);
+                body.indices.emplace_back(x - 1);
+                body.indices.emplace_back(x);
+            } else {
+                body.indices.emplace_back(size);
+                body.indices.emplace_back(size - 1);
+                body.indices.emplace_back(size - (resX + 1));
+    
+                body.indices.emplace_back(size - 1);
+                body.indices.emplace_back(size - (resX + 2));
+                body.indices.emplace_back(size - (resX + 1));
+            }
+
+            body.points.emplace_back(texture_x);
+            body.points.emplace_back(texture_y);
+
+            theta = theta + inc_x;
+            texture_x = texture_x + inc_tex_x;
             sin_theta = sin(glm::radians(theta));
             cos_theta = cos(glm::radians(theta));
-
-            body.points.emplace_back(cos_phi*radius*sin_theta);
-            body.points.emplace_back(sin_phi*radius);
-            body.points.emplace_back(cos_phi*radius*cos_theta);
-
-            size = body.points.size()/3 - 1;
-
-            body.indices.emplace_back(size - (1 + resX));
-            body.indices.emplace_back(size - resX);
-            body.indices.emplace_back(size);
-
-            body.indices.emplace_back(size - (1 + resX));
-            body.indices.emplace_back(size);
-            body.indices.emplace_back(size - 1);
-
             x++;
         }
-        //body.indices.emplace_back(size - resX);
-        //body.indices.emplace_back(size - (2*resX));
-        //body.indices.emplace_back(size - (resX - 1));
-
-        //body.indices.emplace_back(size - resX);
-        //body.indices.emplace_back(size - (resX - 1));
-        //body.indices.emplace_back(size);
-        theta = 0.0f;
-        x = 0;
         y++;
     }
-
 }
 
 camera::camera(int& width, int& height, float& sensitivity, float& speed, float& fov){
@@ -232,7 +243,7 @@ scene_3d::scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& po
     glfwMakeContextCurrent(window);
 
     if(glewInit() != GLEW_OK){
-        std::cerr << "Error!\n";
+        std::cerr << "Fuck!\n";
     }
 
     std::cout << glGetString(GL_VERSION) << "\n";
@@ -253,7 +264,9 @@ scene_3d::scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& po
     this->vb = std::make_unique<v_buffer>(this->mesh.body.points.size()*sizeof(float), this->mesh.body.points.data());
     arrayLayout layout;
     layout.push(3, GL_FLOAT);
-    //layout.push(2, GL_FLOAT);
+    layout.push(3, GL_FLOAT);
+    layout.push(2, GL_FLOAT);
+
     this->va = std::make_unique<v_array>();
     this->va->addBuffer(*this->vb, layout);
     this->ib = std::make_unique<i_buffer>(this->mesh.body.indices.size(), this->mesh.body.indices.data());
@@ -273,6 +286,7 @@ scene_3d::scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& po
     this->program->setuniformMat4f("projection", this->exposure->projection);
     this->program->setuniform3f("lightPos", this->light_pos);
     this->program->setuniform4f("u_LightColor", this->light_color);
+    this->program->setuniform1i("u_Texture", 0);
     this->image->bind();
 }
 

@@ -14,37 +14,11 @@ void main(){
     gl_Position = u_Matrix * vec4(position, 0.0, 1.0);
 }
 
-#shader geometry
-#version 330 core
-
-layout (triangles) in;
-layout (triangle_strip, max_vertices = 3) out;
-
-in vec2 pixel[];
-
-out vec2 pixeled;
-
-void main(){
-    gl_Position = gl_in[0].gl_Position;
-    pixeled = pixel[0];
-    EmitVertex();
-
-    gl_Position = gl_in[1].gl_Position;
-    pixeled = pixel[1];
-    EmitVertex();
-
-    gl_Position = gl_in[2].gl_Position;
-    pixeled = pixel[2];
-    EmitVertex();
-
-    EndPrimitive();
-}
-
 #shader fragment
 #version 330 core
 
 layout(location = 0) out vec4 color;
-in vec2 pixeled;
+in vec2 pixel;
 
 uniform float radius;
 uniform vec2 center;
@@ -52,7 +26,7 @@ uniform vec4 u_Color;
 
 
 void main(){
-    float distance = distance(pixeled, center);
+    float distance = distance(pixel, center);
     if(distance > radius){
         discard;
     }

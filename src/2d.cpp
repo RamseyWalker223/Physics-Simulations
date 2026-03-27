@@ -93,13 +93,14 @@ void scene_2d::set_sim_rand(int count, float min_radius, float max_radius, float
         balls.insert(balls.end(), elements.begin(), elements.end());
         placed_count++;
     }
-    //std::list<float> poo = {0.0f, 10.0f, 0.0f, -0.5f, 0.0f, 0.0f, 100.0f, 0.3f, 1.0f, 0.0f, 0.0f, 1.0f};
+    //std::list<float> poo = {0.0f, 3.0f, 0.0f, -0.05f, 0.0f, 0.0f, 100.0f, 0.3f, 1.0f, 0.0f, 0.0f, 1.0f};
     //balls.insert(balls.end(), poo.begin(), poo.end());
     this->world = std::make_unique<simulation>(balls, "../res/shaders/circle.shader", aspect, time);
 }
 
 void scene_2d::run(bool video, bool screen){
     world->simulate();
+    if(!video && !screen) return;
     if(video){
         std::string cmd_str = "ffmpeg -r " + std::to_string(fps) + " -f rawvideo -pix_fmt rgba -s " + std::to_string(width) + "x" + std::to_string(height) + " -i - -threads 0 -preset fast -y -pix_fmt yuv444p -crf 0 -vf vflip ../videos/simulation.mp4";
         this->cmd = cmd_str.c_str();

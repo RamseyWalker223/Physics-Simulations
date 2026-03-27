@@ -19,11 +19,10 @@ struct event;
 struct particle{
     float radius, mass, time, aspect;
     glm::vec2 position, velocity;
-    std::optional<std::list<event>::iterator> collision;
-    void move(float dt);
     //This boolean reference is true if its a brand new time, and false if the time doesnt change
     //The function returns false if no new collision was made and true if one was made.
     bool next_collision(float& time, collision_type& type, bool& new_time);
+    void move(float dt);
 };
 
 struct particle_m{

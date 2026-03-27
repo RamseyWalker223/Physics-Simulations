@@ -7,7 +7,6 @@
 
 struct shaderSource{
     std::string vertex;
-    std::string geometry;
     std::string fragment;
 };
 
@@ -20,7 +19,7 @@ class shader{
 
         shaderSource parse(const std::string& file);
         unsigned int CompileShader(unsigned int type, const std::string& source);
-        unsigned int CreateShader(const std::string& vertexShader, const std::string& geometryShader, const std::string& fragmentShader);
+        unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
     public:
         shader(const std::string& filename);
         ~shader();
