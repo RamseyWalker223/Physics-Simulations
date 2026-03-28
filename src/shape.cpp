@@ -91,7 +91,7 @@ void particle_m::update(){
     vertex->bind();
     glBufferSubData(GL_ARRAY_BUFFER, 0, square.points.size() * sizeof(float), square.points.data());
     program->bind();
-    program->setuniform2f("center", glm::vec2(ball.position.x, ball.position.y));
+    program->setuniform2f("center", ball.position);
     drawing.Draw(*array, *index, *program);
 }
 

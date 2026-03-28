@@ -11,10 +11,11 @@ class scene_2d{
         void run(bool video, bool screen);
     private:
         GLFWwindow* window;
+        FILE* ffmpeg;
+        const char* cmd;
+        int* buffer;
         int width, height, fps;
         float aspect;
+        
         std::unique_ptr<simulation> world;
-        const char* cmd;
-        FILE* ffmpeg;
-        int* buffer;
 };

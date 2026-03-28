@@ -30,6 +30,7 @@ float fov = 45.0f;
     scene.run(true, false);
     return 0;
 }*/
+
 //scene.set_sim_rand(200, 0.03f, 0.5f, 0.005f, 1.0f, 5.0f, 1000);
 //This took 50 seconds without the optimization
 
@@ -37,44 +38,13 @@ float fov = 45.0f;
 int main(){
     std::vector<glm::vec3> positions = {
         glm::vec3( 0.0f,  0.0f,  0.0f),
-        glm::vec3( 2.0f,  5.0f, -15.0f),
-        glm::vec3(-1.5f, -2.2f, -2.5f),
-        glm::vec3(-3.8f, -2.0f, -12.3f),
-        glm::vec3( 2.4f, -0.4f, -3.5f),
-        glm::vec3(-1.7f,  3.0f, -7.5f),
-        glm::vec3( 1.3f, -2.0f, -2.5f),
-        glm::vec3( 1.5f,  2.0f, -2.5f),
-        glm::vec3( 1.5f,  0.2f, -1.5f),
-        glm::vec3(-1.3f,  1.0f, -1.5f)
-    };
-
-    std::vector<float> scales = {
-        0.5f,
-        0.5f,
-        0.5f,
-        0.5f,
-        0.5f,
-        0.5f,
-        0.5f,
-        0.5f,
-        0.5f,
-        0.5f
     };
 
     std::vector<glm::vec4> colors = {
-        {1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f},
+        {0.0f, 1.0f, 1.0f, 1.0f},
     };
 
-    scene_3d scene(width, height, fps, positions, scales, 0.2f, 2.5f, glm::radians(fov), "../res/textures/earth.png", colors, "../res/shaders/3d.shader", 500, 500, 1.0f);
-    scene.run(true, true, true);
+    scene_3d scene(width, height, fps, positions, 0.2f, 2.5f, glm::radians(fov), "../res/textures/earth.png", colors, "../res/shaders/3d.shader", 500, 500, 1.0f);
+    scene.run(false, true, true);
     return 0;
 }

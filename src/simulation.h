@@ -26,18 +26,17 @@ struct particle{
 };
 
 struct particle_m{
-    public:
-        renderer drawing;
-        std::unique_ptr<i_buffer> index;
-        std::unique_ptr<v_buffer> vertex;
-        std::unique_ptr<v_array> array;
-        std::unique_ptr<shader> program;
-        shape square;
-        particle ball;
-        particle_m(float x, float y, float vx, float vy, float ax, float ay, float mass, float radius, std::string source, float aspect, float r, float g, float b, float a);
-        void update();
-        void tick();
-        void render(bool multiple);
+    renderer drawing;
+    std::unique_ptr<i_buffer> index;
+    std::unique_ptr<v_buffer> vertex;
+    std::unique_ptr<v_array> array;
+    std::unique_ptr<shader> program;
+    shape square;
+    particle ball;
+    particle_m(float x, float y, float vx, float vy, float ax, float ay, float mass, float radius, std::string source, float aspect, float r, float g, float b, float a);
+    void update();
+    void tick();
+    void render(bool multiple);
 };
 
 struct change{

@@ -28,7 +28,6 @@ class camera{
 class scene_3d{
     private:
         int width, height, fps;
-        //cube mesh;
         sphere mesh;
         std::vector<glm::vec4> colors;
         std::vector<glm::vec3> positions;
@@ -48,6 +47,6 @@ class scene_3d{
         int* buffer;
         GLFWwindow* window;
     public:
-        scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& positions, std::vector<float>& scales, float sensitivity, float speed, float fov, std::string image, std::vector<glm::vec4>& color, std::string program, int resX, int resY, float radius);
+        scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& positions, float sensitivity, float speed, float fov, std::string image, std::vector<glm::vec4>& color, std::string program, int resX, int resY, float radius);
         void run(bool video, bool screen, bool texture);
 };

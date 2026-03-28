@@ -35,7 +35,6 @@ cube::cube(){
 }
 
 void sphere::generate(int resX, int resY, float radius){
-    this->radius = radius;
     int x = 0;
     int y = 1;
     float phi, theta, phi_next, theta_next, sin_phi, cos_phi, sin_theta, cos_theta, texture_x, texture_y, inc_x, inc_y, inc_tex_x, inc_tex_y;
@@ -221,7 +220,7 @@ void mouser(GLFWwindow* window, double xpos, double ypos) {
 }
 
 //Scales is useless rn. If you want it to actually do smt, make it change the size of each model
-scene_3d::scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& positions, std::vector<float>& scales, float sensitivity, float speed, float fov, std::string image, std::vector<glm::vec4>& color, std::string program, int resX, int resY, float radius){
+scene_3d::scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& positions, float sensitivity, float speed, float fov, std::string image, std::vector<glm::vec4>& color, std::string program, int resX, int resY, float radius){
     this->fps = fps;
     this->width = width;
     this->height = height;
@@ -256,7 +255,9 @@ scene_3d::scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& po
         this->colors.emplace_back(colors[i]);
     }
     for(int i = 0; i < positions.size(); i++){
-        this->positions.emplace_back(positions[i]/scales[i]);
+        this->positions.emplace_back(positions[i]);
+        //Old we had a scale for position, dont really know why.
+        //this->positions.emplace_back(positions[i]/scales[i]);
     }
     this->colors = color;
 
@@ -286,6 +287,7 @@ scene_3d::scene_3d(int& width, int& height, int& fps, std::vector<glm::vec3>& po
     this->program->setuniformMat4f("projection", this->exposure->projection);
     this->program->setuniform3f("lightPos", this->light_pos);
     this->program->setuniform4f("u_LightColor", this->light_color);
+    this->program->setuniform1f("shinyness", 50);
     this->program->setuniform1i("u_Texture", 0);
     this->image->bind();
 }
@@ -309,6 +311,7 @@ void scene_3d::run(bool video, bool screen, bool texture){
         CALL(glClear(GL_DEPTH_BUFFER_BIT));
 
         program->setuniformMat4f("view", exposure->view);
+        this->program->setuniform3f("camPos", this->exposure->pos);
 
 
         for(int i = 0; i < positions.size(); i++){
